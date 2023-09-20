@@ -16,6 +16,7 @@ import unittest
 class Solution:
     def combinationSum(self, nums: list[int], target: int) -> list[list[int]]:
         ans = []
+        nums.sort()
 
         def dfs(temp: list[int], candidates: list[int], total: int):
             if total == target:
@@ -28,7 +29,6 @@ class Solution:
                 temp_copy.append(num)
                 dfs(temp_copy, candidates[i:], total + num)
 
-        nums.sort()
         dfs([], nums, 0)
         return ans
 
