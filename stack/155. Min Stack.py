@@ -4,37 +4,20 @@ The trick here is to keep another stack for each min value and pop from this sta
 original stack when needed
 
 Another way to solve it is to save the current min with the value in the same stack in a tuple
+
+
+[-2],[0],[-3]
+[-2]
+[(-2,-2),(0,-2),(-3,-3)]
+
+
+#attach_solution_to_stack
 """
 
 
-import sys
 import unittest
 
-# First approach
-# class MinStack:
-#     def __init__(self):
-#         self.num_stack = []
-#         self.min_stack = []
 
-#     def push(self, val: int) -> None:
-#         self.num_stack.append(val)
-#         if len(self.min_stack) == 0:
-#             self.min_stack.append(val)
-#         else:
-#             self.min_stack.append(min(val, self.min_stack[-1]))
-
-#     def pop(self) -> None:
-#         self.num_stack.pop()
-#         self.min_stack.pop()
-
-#     def top(self) -> int:
-#         return self.num_stack[-1]
-
-#     def getMin(self) -> int:
-#         return self.min_stack[-1]
-
-
-# Second approach
 class MinStack:
     def __init__(self):
         self.num_stack = []

@@ -1,52 +1,33 @@
 """
 https://leetcode.com/problems/next-greater-element-ii/
-[5,4,3,2,1]
+121
+2:1 [1] ans -1
+1:2 [2] pop 1 since greater ans -1
+0:1 [2,1] ans 2
+2:1 [2,1] pop 1 ans 2 
+1:2 [2] pop all ans -1
+0:1 ans 2
 
-
-12343
-ans = [2,3,4,-1,4]
-3:4[(3,4)]
-4:3[(3,4),(4,3)]
-0:1[(3,4),(4,3)]
-1:2[(3,4),(4,3)]
-2:3[(3,4),(4,3)]
-3:4[(3,4)]
-
-
+pop if what in stack is equal or less
 """
 import unittest
 
 
 class Solution:
     def nextGreaterElements(self, nums: list[int]) -> list[int]:
+        # store only num (no need to store index)
         stack = []
         ans = [-1 for _ in range(len(nums))]
-        for i, num in enumerate(nums):
-            while len(stack) > 0 and num > nums[stack[-1]]:
-                j = stack.pop()
-                ans[j] = num
-            stack.append(i)
-        for i, num in enumerate(nums):
-            while len(stack) > 0 and num > nums[stack[-1]]:
-                j = stack.pop()
-                ans[j] = num
+        # loop twice because it's circular
+        # iterating in reverse
+        for j in range(len(nums) * 2 - 1, -1, -1):
+            i = j % len(nums)
+            num = nums[i]
+            while len(stack) > 0 and stack[-1] <= num:
+                stack.pop()
+            ans[i] = -1 if len(stack) == 0 else stack[-1]
+            stack.append(num)
         return ans
-
-
-# class Solution:
-#     def nextGreaterElements(self, nums: list[int]) -> list[int]:
-#         stack = []
-#         ans = [-1 for _ in range(len(nums))]
-#         for i, num in enumerate(nums):
-#             while len(stack) > 0 and num > nums[stack[-1]]:
-#                 j = stack.pop()
-#                 ans[j] = num
-#             stack.append(i)
-#         for i, num in enumerate(nums):
-#             while len(stack) > 0 and num > nums[stack[-1]]:
-#                 j = stack.pop()
-#                 ans[j] = num
-#         return ans
 
 
 class Test(unittest.TestCase):

@@ -1,27 +1,26 @@
 """
 https://leetcode.com/problems/daily-temperatures/
 73,74,75,71,69,72,76,73
-
-73: m73 waiting=[(73,0)]
-74: stack.pop() arr[tup[1]] = temp - tup[0]. stack.append((74,1))
-75: 
-
-Btw, we don't need to store temperatures again in the stack. We can just store the index since we can get the
-temp easily by knowing the index
+7:73 [(73,7)] ans 0
+6:76 [(76,6)] pop 1 ans 0
+5:72 [(76,6),(72,5)] ans 1
+you pop when num is greater than or equal what's in stack. Stack should include something that represent time (not only value)
 """
+from collections import deque
 import unittest
 
 
 class Solution:
     def dailyTemperatures(self, temperatures: list[int]) -> list[int]:
         stack = []
-        ans = [0 for _ in range(len(temperatures))]
-        for i, temp in enumerate(temperatures):
-            while len(stack) > 0 and temperatures[stack[-1]] < temp:
-                j = stack.pop()
-                ans[j] = i - j
+        ans = deque([])
+        for i in range(len(temperatures) - 1, -1, -1):
+            temp = temperatures[i]
+            while len(stack) > 0 and temp >= temperatures[stack[-1]]:
+                stack.pop()
+            ans.appendleft(0 if len(stack) == 0 else stack[-1] - i)
             stack.append(i)
-        return ans
+        return list(ans)
 
 
 class Test(unittest.TestCase):
