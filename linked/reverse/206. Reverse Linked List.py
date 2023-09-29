@@ -37,7 +37,10 @@ class Solution:
     def reverseList(self, p1: Optional[ListNode]) -> Optional[ListNode]:
         p0 = None
         while p1:
-            p1.next, p1, p0 = p0, p1.next, p1
+            p1_next_old = p1.next
+            p1.next = p0
+            p0 = p1
+            p1 = p1_next_old
         return p0
 
 
