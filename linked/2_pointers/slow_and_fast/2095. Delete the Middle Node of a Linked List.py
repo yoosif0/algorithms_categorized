@@ -1,11 +1,16 @@
 """
 https://leetcode.com/problems/delete-the-middle-node-of-a-linked-list
 
-1,3,4,7,1,2,6
-s   f
+d   1 2 3 4
+d     l     r
 
 slow and fast pointer but this time the fast pointer started 2 steps further to allow to delete "slow.next" at the end
 #remove
+#dummy
+#return_d.next
+
+  [1,3,4,7,1,2,6]
+d        l       r
 """
 from typing import Optional
 import unittest
@@ -25,26 +30,21 @@ class ListNode:
 
 class Solution:
     def deleteMiddle(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        if not head or not head.next:
-            return None
-        slow = head
-        fast = head.next.next
-        while fast and fast.next:
-            slow = slow.next
-            fast = fast.next.next
-        slow.next = slow.next.next
-        return head
+        d = ListNode(0, head)
+        s = d
+        f = head
+        while f and f.next:
+            s = s.next
+            f = f.next.next
+        s.next = s.next.next
+        return d.next
 
 
 class Test(unittest.TestCase):
     def test(self):
         t = Solution()
-        tree = ListNode(1, ListNode(2, ListNode(3, ListNode(4))))
-        res = t.deleteMiddle(tree)
-        print(res)
-        tree = ListNode(2, ListNode(1))
-        res = t.deleteMiddle(tree)
-        print(res)
+        print(t.deleteMiddle(ListNode(1, ListNode(2, ListNode(3, ListNode(4))))))
+        print(t.deleteMiddle(ListNode(2, ListNode(1))))
 
 
 if __name__ == "__main__":

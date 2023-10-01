@@ -10,8 +10,8 @@ import unittest
 
 class Solution:
     def islandPerimeter(self, grid: list[list[int]]) -> int:
-        g_len = len(grid)
-        r_len = len(grid[0])
+        m = len(grid)
+        n = len(grid[0])
         ans = 0
         for i, row in enumerate(grid):
             for j, cell in enumerate(row):
@@ -22,7 +22,7 @@ class Solution:
                 for c in neighbors:
                     r_i = c[0]
                     c_i = c[1]
-                    if r_i >= g_len or c_i >= r_len or r_i < 0 or c_i < 0:
+                    if r_i >= m or c_i >= n or r_i < 0 or c_i < 0:
                         continue
                     # if a neighbor exists from a side then reduce the peri by 1
                     if grid[r_i][c_i]:

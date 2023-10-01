@@ -14,11 +14,11 @@ class Solution:
         old_color = grid[sr][sc]
         if old_color == new_color:
             return grid
-        g_len = len(grid)
-        r_len = len(grid[0])
+        m = len(grid)
+        n = len(grid[0])
 
         def dfs(r: int, c: int):
-            if not 0 <= r < g_len or not 0 <= c < r_len or grid[r][c] != old_color:
+            if not 0 <= r < m or not 0 <= c < n or grid[r][c] != old_color:
                 return
             grid[r][c] = new_color
             dfs(r + 1, c)

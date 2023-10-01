@@ -20,11 +20,11 @@ class ListNode:
 
 class Solution:
     def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        fast = slow = head
-        while fast and fast.next:
-            slow = slow.next
-            fast = fast.next.next
-        return slow
+        f = s = head
+        while f and f.next:
+            s = s.next
+            f = f.next.next
+        return s
 
 
 class Test(unittest.TestCase):

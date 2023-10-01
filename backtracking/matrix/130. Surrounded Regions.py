@@ -12,11 +12,11 @@ import unittest
 
 class Solution:
     def solve(self, grid: list[list[str]]) -> None:
-        g_len = len(grid)
-        r_len = len(grid[0])
+        m = len(grid)
+        n = len(grid[0])
 
         def dfs(r: int, c: int):
-            if not 0 <= r < g_len or not 0 <= c < r_len or grid[r][c] != "O":
+            if not 0 <= r < m or not 0 <= c < n or grid[r][c] != "O":
                 return
             # these are the ones that should stay "O"
             grid[r][c] = "c"
@@ -28,7 +28,7 @@ class Solution:
         # Move through all 4 boundaries
         for i, row in enumerate(grid):
             for j, _ in enumerate(row):
-                at_border = i == 0 or i == g_len - 1 or j == 0 or j == r_len - 1
+                at_border = i == 0 or i == m - 1 or j == 0 or j == n - 1
                 if at_border and grid[i][j] == "0":
                     dfs(i, j)
 

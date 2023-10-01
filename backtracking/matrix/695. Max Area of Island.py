@@ -6,14 +6,14 @@ import unittest
 
 class Solution:
     def maxAreaOfIsland(self, grid: list[list[int]]) -> int:
-        g_len = len(grid)
-        r_len = len(grid[0])
+        m = len(grid)
+        n = len(grid[0])
         cur = 0
         ans = 0
 
         def dfs(r: int, c: int) -> None:
             nonlocal cur
-            if not 0 <= r < g_len or not 0 <= c < r_len or grid[r][c] != 1:
+            if not 0 <= r < m or not 0 <= c < n or grid[r][c] != 1:
                 return 0
             # mark cell as visited so that it's not counted again
             grid[r][c] = "v"

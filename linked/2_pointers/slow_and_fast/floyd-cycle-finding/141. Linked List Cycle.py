@@ -1,5 +1,6 @@
 """
 https://leetcode.com/problems/linked-list-cycle/
+#dummy
 """
 from typing import Optional
 import unittest
@@ -27,18 +28,16 @@ Robert W. Floyd's tortoise and hare algorithm
 
 
 class Solution:
-    def hasCycle(self, slow: Optional[ListNode]) -> bool:
-        # head is the slow pointer
-        if not slow:
-            return False
-        fast = slow.next
-        while fast and slow:
-            if fast == slow:
+    def hasCycle(self, head: Optional[ListNode]) -> bool:
+        s = ListNode(0, head)
+        f = head
+        while f and s:
+            if f == s:
                 return True
-            if not fast.next:
+            if not f.next:
                 return False
-            fast = fast.next.next
-            slow = slow.next
+            f = f.next.next
+            s = s.next
         return False
 
 

@@ -1,15 +1,9 @@
 """
 https://leetcode.com/problems/remove-nth-node-from-end-of-list/
-  1   2
-      p
-slow and fast pointer but this time the fast pointer started 2 steps further to allow to delete 
-"slow.next" at the end
-
-
-
-1   2
+#dummy
+#slow_fast
 #remove
-
+#return_d.next
 """
 from typing import Optional
 import unittest
@@ -27,37 +21,44 @@ class ListNode:
         return ret
 
 
+"""
+   1  2  3  4  5
+d        l     r 
+----------
+   1   
+dl r        
+----------
+   1  2  
+dr   
+
+"""
+
+
 class Solution:
     def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
-        ahead = head
+        d = ListNode(0, head)
+        r = d
         for _ in range(n):
-            ahead = ahead.next
-        # this happens when the node to be deleted is the head. we can't use p.next = p.next.next in this case
-        if not ahead:
-            return head.next
-        late = head
-        while ahead.next:
-            ahead = ahead.next
-            late = late.next
-        late.next = late.next.next
-        return head
+            r = r.next
+        l = d
+        while r and r.next:
+            r = r.next
+            l = l.next
+        l.next = l.next.next
+        return d.next
 
 
 class Test(unittest.TestCase):
     def test(self):
         t = Solution()
-        tree = ListNode(1, ListNode(2, ListNode(3, ListNode(4, ListNode(5)))))
-        res = t.removeNthFromEnd(tree, 2)
-        print(res)
-        tree = ListNode(1)
-        res = t.removeNthFromEnd(tree, 1)
-        print(res)
-        tree = ListNode(1, ListNode(2))
-        res = t.removeNthFromEnd(tree, 1)
-        print(res)
-        tree = ListNode(1, ListNode(2))
-        res = t.removeNthFromEnd(tree, 2)
-        print(res)
+        print(
+            t.removeNthFromEnd(
+                ListNode(1, ListNode(2, ListNode(3, ListNode(4, ListNode(5))))), 2
+            )
+        )
+        print(t.removeNthFromEnd(ListNode(1), 1))
+        print(t.removeNthFromEnd(ListNode(1, ListNode(2)), 1))
+        print(t.removeNthFromEnd(ListNode(1, ListNode(2)), 2))
 
 
 if __name__ == "__main__":

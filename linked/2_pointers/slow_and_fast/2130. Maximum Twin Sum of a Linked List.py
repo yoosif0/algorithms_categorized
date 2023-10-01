@@ -34,11 +34,11 @@ class Solution:
     def pairSum(self, h: Optional[ListNode]) -> int:
         # reverse first half of list to have 2 lists where each node in a list
         # have the same index with its pair in the other list
-        p0 = None
-        fast = h
-        while fast and fast.next:
-            fast = fast.next.next
-            h.next, p0, h = p0, h, h.next
+        d = None
+        f = h
+        while f and f.next:
+            f = f.next.next
+            h.next, d, h = d, h, h.next
 
         # get sum for each pair and compare with max
         ans = 0

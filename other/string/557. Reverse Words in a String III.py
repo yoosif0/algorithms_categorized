@@ -7,18 +7,25 @@ import unittest
 
 class Solution:
     def reverseWords(self, s: str) -> str:
-        sentence = []
-        word = []
-        for char in s:
-            if char == " ":
-                if len(word):
-                    sentence.append("".join(word[::-1]))
-                    word = []
-                continue
-            word.append(char)
-        if len(word):
-            sentence.append("".join(word[::-1]))
-        return " ".join(sentence)
+        a = list(s)
+        nxt = len(a) - 1
+        while nxt >= 0:
+            r = nxt
+            while r >= 0 and a[r] == " ":
+                r -= 1
+            l = r
+            while True:
+                if l == 0:
+                    break
+                if l >= 1 and a[l - 1] == " ":
+                    break
+                l -= 1
+            nxt = l - 1
+            while l < r:
+                a[r], a[l] = a[l], a[r]
+                l += 1
+                r -= 1
+        return "".join(a)
 
 
 class Test(unittest.TestCase):

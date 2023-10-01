@@ -24,15 +24,15 @@ import unittest
 
 class Solution:
     def exist(self, grid: list[list[str]], word: str) -> bool:
-        g_len = len(grid)
-        r_len = len(grid[0])
+        m = len(grid)
+        n = len(grid[0])
         found = False
 
         def dfs(r: int, c: int, char_to_search: int):
             nonlocal found
             if (
-                not 0 <= r < g_len
-                or not 0 <= c < r_len
+                not 0 <= r < m
+                or not 0 <= c < n
                 or found
                 or grid[r][c] != word[char_to_search]
             ):

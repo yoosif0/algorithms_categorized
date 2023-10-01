@@ -11,14 +11,14 @@ import unittest
 
 class Solution:
     def countSubIslands(self, grid1: list[list[int]], grid2: list[list[int]]) -> int:
-        g_len = len(grid2)
-        r_len = len(grid2[0])
+        m = len(grid2)
+        n = len(grid2[0])
         cur = True
         ans = 0
 
         def dfs(r: int, c: int):
             nonlocal cur
-            if not 0 <= r < g_len or not 0 <= c < r_len or grid2[r][c] != 1:
+            if not 0 <= r < m or not 0 <= c < n or grid2[r][c] != 1:
                 return
             grid2[r][c] = "v"
             if grid1[r][c] != 1:
