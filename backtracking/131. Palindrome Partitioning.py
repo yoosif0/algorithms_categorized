@@ -41,17 +41,12 @@ class Solution:
     def permute(self, nums: list[int]) -> list[list[int]]:
         ans = []
 
-        def dfs(temp: list[int], candidates: list[int]):
-            if len(temp) == len(nums):
-                ans.append(temp)
+        def dfs(tmp: list[int], cs: list[int]):
+            if len(tmp) == len(nums):
+                ans.append(tmp)
                 return
-            for num in candidates:
-                temp_copy = temp.copy()
-                temp_copy.append(num)
-                candidates_copy = candidates.copy()
-                # not a big deal since we are O(n) anyways inside this loop and the "candidates" are not too much. Even if candidates are too much the main culprit is the exponenetial time it takes from backtracking
-                candidates_copy.remove(num)
-                dfs(temp_copy, candidates_copy)
+            for i, num in enumerate(cs):
+                dfs([*tmp, num], cs[0:i] + cs[i + 1 :])
 
         dfs([], nums)
         return ans

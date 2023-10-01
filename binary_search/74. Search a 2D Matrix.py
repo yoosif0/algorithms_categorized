@@ -3,6 +3,7 @@ https://leetcode.com/problems/search-a-2d-matrix/
 3/col1 = 3/4 = 0r3
 4/4 = 1r0 = [1][0]
 5/4 = 1r2 
+#matrix
 
 """
 

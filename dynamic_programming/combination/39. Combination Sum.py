@@ -35,23 +35,23 @@ import unittest
 
 
 class Solution:
-    def combinationSum(self, candidates: list[int], target: int) -> list[list[int]]:
+    def combinationSum(self, cs: list[int], target: int) -> list[list[int]]:
         dp: list[list[list[int]]] = [[] for _ in range(target + 1)]
         dp[0] = [[]]
         for i in range(len(dp)):
             if len(dp[i]) < 1:
                 continue
-            for candidate in candidates:
-                if i + candidate >= len(dp):
+            for c in cs:
+                if i + c >= len(dp):
                     continue
-                if candidate < i:
-                    print(i, candidate)
+                if c < i:
+                    print(i, c)
                     continue
                 all_arrs: list[list[int]] = [
-                    *dp[i + candidate],
-                    *[arr + [candidate] for arr in dp[i]],
+                    *dp[i + c],
+                    *[arr + [c] for arr in dp[i]],
                 ]
-                dp[i + candidate] = all_arrs
+                dp[i + c] = all_arrs
         # print("\t".join(map(str, dp)))
         print(dp)
         return [[]]

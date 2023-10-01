@@ -18,16 +18,14 @@ class Solution:
         ans = []
         nums.sort()
 
-        def dfs(temp: list[int], candidates: list[int], total: int):
+        def dfs(tmp: list[int], cs: list[int], total: int):
             if total == target:
-                ans.append(temp)
+                ans.append(tmp)
                 return
-            for i, num in enumerate(candidates):
-                if total + num > target:
+            for i, c in enumerate(cs):
+                if total + c > target:
                     break
-                temp_copy = temp.copy()
-                temp_copy.append(num)
-                dfs(temp_copy, candidates[i:], total + num)
+                dfs([*tmp, c], cs[i:], total + c)
 
         dfs([], nums, 0)
         return ans
