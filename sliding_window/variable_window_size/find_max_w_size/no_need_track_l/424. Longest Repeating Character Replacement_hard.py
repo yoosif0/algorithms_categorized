@@ -20,8 +20,22 @@ A l=6
 A do nothing update max
 A do nothing
 
+AABABBA 1
+A
+AA
+AAB
+AABA 4
+AABAB not work
+ABAB not work
+BAB  work
+BABB  work
+BABBA  not work
+ABBA  not work
+BBA work
 
 
+#no_need_nested_while
+#no_need_track_l
 """
 import unittest
 
@@ -29,17 +43,18 @@ import unittest
 class Solution:
     def characterReplacement(self, s, k):
         ans = 0
-        char_freq = {}
+        ch_freq = {}
         highest_freq = 0
-        for i in range(len(s)):
-            char = s[i]
-            char_freq[char] = char_freq.get(char, 0) + 1
-            highest_freq = max(char_freq[char], highest_freq)
+        for r in range(len(s)):
+            ch = s[r]
+            ch_freq[ch] = ch_freq.get(ch, 0) + 1
+            highest_freq = max(ch_freq[ch], highest_freq)
             if highest_freq + k > ans:
                 ans += 1
             else:
-                char_to_remove = s[i - ans]
-                char_freq[char_to_remove] = char_freq[char_to_remove] - 1
+                # remove
+                ch = s[r - ans]
+                ch_freq[ch] = ch_freq[ch] - 1
         return ans
 
 

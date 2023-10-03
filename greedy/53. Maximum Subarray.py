@@ -11,8 +11,6 @@ https://leetcode.com/problems/maximum-subarray/
 1: wv=6
 -5: wv=1
 4: wv=5
-
-also #greedy
 """
 
 
@@ -21,12 +19,12 @@ import unittest
 
 class Solution:
     def maxSubArray(self, nums: list[int]) -> int:
-        window_val = nums[0]
-        ans = window_val
+        w = nums[0]
+        ans = w
         for r in range(1, len(nums)):
             num = nums[r]
-            window_val = max(window_val + num, num)
-            ans = max(window_val, ans)
+            w = max(w + num, num)
+            ans = max(w, ans)
         return ans
 
 

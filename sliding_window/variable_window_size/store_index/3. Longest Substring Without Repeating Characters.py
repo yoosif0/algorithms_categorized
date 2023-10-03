@@ -11,6 +11,11 @@ b
 z
 d
 a 4
+
+#store_index
+#unique
+The idea here is to store the index of the last incident of a character we saw before to 
+make it the "l" for the window when the window is no longer sustainable
 """
 
 import unittest
@@ -19,16 +24,16 @@ import unittest
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
         ans = 0
-        char_to_index = {}
+        ch_to_i = {}
         l = 0
         for r in range(len(s)):
-            char = s[r]
-            if char in char_to_index and char_to_index[char] >= l:
-                # shift start of window to the right to bypass the problematic character
-                l = char_to_index[char] + 1
-            char_to_index[char] = r
-            window_length = r - l + 1
-            ans = max(window_length, ans)
+            ch = s[r]
+            if ch in ch_to_i and ch_to_i[ch] >= l:
+                # shift l right to bypass the problematic character
+                l = ch_to_i[ch] + 1
+            ch_to_i[ch] = r
+            k = r - l + 1
+            ans = max(k, ans)
         return ans
 
 
