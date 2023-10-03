@@ -26,8 +26,8 @@ class Solution:
         for r in range(len(nums)):
             cur_sum += nums[r]
             while cur_sum >= target:
-                window_size = r - l + 1
-                ans = min(window_size, ans)
+                m = r - l + 1
+                ans = min(m, ans)
                 # try to shift l to the right as much as possible
                 proposed_l, proposed_sum = l + 1, cur_sum - nums[l]
                 if proposed_sum < target:

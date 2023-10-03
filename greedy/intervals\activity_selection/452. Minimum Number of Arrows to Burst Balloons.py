@@ -1,5 +1,5 @@
 """
-https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons/description/
+https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons/
 
 #overlapping_interval
 

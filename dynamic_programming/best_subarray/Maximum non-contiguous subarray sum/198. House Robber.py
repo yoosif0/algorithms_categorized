@@ -1,4 +1,6 @@
 """
+https://leetcode.com/problems/house-robber/
+
 [2,7,9,3,1,20,5,22,60]
 2: incl:2 excl:0
 7: incl:7 excl:2
@@ -9,7 +11,6 @@
 5: incl:17 excl:31
 22:incl:53 excl:31
 60:incl:91 excl:53
-for: https://leetcode.com/problems/house-robber/
 """
 
 import unittest

@@ -1,41 +1,28 @@
 """
+https://leetcode.com/problems/number-of-sub-arrays-of-size-k-and-average-greater-than-or-equal-to-threshold/
 Input: arr = [2,2,2,2,5,5,5,8], k = 3, threshold = 4
 Output: 3
 
-https://leetcode.com/problems/number-of-sub-arrays-of-size-k-and-average-greater-than-or-equal-to-threshold/description/
 """
 import unittest
 
 
 class Solution:
-    def numOfSubarrays(self, arr: list[int], k: int, threshold: int) -> int:
-        cur_sum = 0
+    def numOfSubarrays(self, a: list[int], k: int, threshold: int) -> int:
+        w = 0
         ans = 0
-
-        def add_to_cur_sum(index: int):
-            nonlocal cur_sum
-            cur_sum += arr[index]
-
-        def remove_from_cur_sum(index: int):
-            nonlocal cur_sum
-            cur_sum -= arr[index]
-
-        def check_avg():
-            nonlocal ans
-            avg = cur_sum / k
-            if avg >= threshold:
-                ans += 1
-
-        # initial window
         for i in range(k):
-            add_to_cur_sum(i)
-        check_avg()
-
-        # Slide window
-        for i in range(k, len(arr)):
-            add_to_cur_sum(i)
-            remove_from_cur_sum(i - k)
-            check_avg()
+            w += a[i]
+        # slide
+        target = threshold * k
+        i = k - 1
+        while True:
+            if w >= target:
+                ans += 1
+            i += 1
+            if i >= len(a):
+                break
+            w += a[i] - a[i - k]
         return ans
 
 

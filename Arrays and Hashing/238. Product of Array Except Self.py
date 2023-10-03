@@ -1,5 +1,5 @@
 """
-https://leetcode.com/problems/product-of-array-except-self/description/
+https://leetcode.com/problems/product-of-array-except-self/
 
 Each num in nums should have a before product and after product saved in an array or hash map and the result
 is before * after

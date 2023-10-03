@@ -1,5 +1,5 @@
 """
-https://leetcode.com/problems/container-with-most-water/description/
+https://leetcode.com/problems/container-with-most-water/
 [1,5,1,2,5,1,1,2,3,1,1,1,1,1,1,1,1,1,1,1,1,1,3,20,6,3]
 minimum height is the limiting factor so we can move the pointer pointing to shorter heights
 """

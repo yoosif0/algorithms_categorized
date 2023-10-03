@@ -1,5 +1,5 @@
 """
-https://leetcode.com/problems/next-greater-element-i/description/
+https://leetcode.com/problems/next-greater-element-i/
 
 [2,1,3,4,2]
 4:2[2] 

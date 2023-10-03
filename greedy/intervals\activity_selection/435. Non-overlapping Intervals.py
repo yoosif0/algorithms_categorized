@@ -1,5 +1,5 @@
 """
-https://leetcode.com/problems/non-overlapping-intervals/description/
+https://leetcode.com/problems/non-overlapping-intervals/
 #overlapping_interval
 #interval_scheduling
 

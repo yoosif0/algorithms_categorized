@@ -1,6 +1,6 @@
 """
 not_complete
-https://leetcode.com/problems/combination-sum/description/
+https://leetcode.com/problems/combination-sum/
 [2,3,6,7], target = 7
 [    0    1   2     3      4       5          6           7
     [[]], [], [],   [],    [],    []         ,[],         []

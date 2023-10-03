@@ -1,40 +1,28 @@
 """
-https://leetcode.com/problems/k-radius-subarray-averages/description/
+https://leetcode.com/problems/k-radius-subarray-averages/
 """
 import unittest
 
 
 class Solution:
-    def getAverages(self, nums: list[int], k: int) -> list[int]:
-        cur_sum = 0
-        ans = [-1] * len(nums)
-        window_size = 2 * k + 1
-
-        if window_size > len(nums):
+    def getAverages(self, a: list[int], z: int) -> list[int]:
+        w = 0
+        ans = [-1] * len(a)
+        k = 2 * z + 1
+        if k > len(a):
             return ans
-
-        def add_to_cur_sum(index: int):
-            nonlocal cur_sum
-            cur_sum += nums[index]
-
-        def remove_from_cur_sum(index: int):
-            nonlocal cur_sum
-            cur_sum -= nums[index]
-
-        def save_avg(index: int):
-            avg = cur_sum // window_size
-            ans[index] = avg
-
-        # initial window
-        for i in range(window_size):
-            add_to_cur_sum(i)
-        save_avg(k)
-
-        # Slide window
-        for i in range(window_size, len(nums)):
-            add_to_cur_sum(i)
-            remove_from_cur_sum(i - window_size)
-            save_avg(i - k)
+        # initial w
+        for i in range(k):
+            w += a[i]
+        # slide
+        i = k - 1
+        while True:
+            avg = w // k
+            ans[i - z] = avg
+            i += 1
+            if i == len(a):
+                break
+            w += a[i] - a[i - k]
         return ans
 
 

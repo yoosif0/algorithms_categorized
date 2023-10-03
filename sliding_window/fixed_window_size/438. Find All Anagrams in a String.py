@@ -1,56 +1,47 @@
 """
-https://leetcode.com/problems/find-all-anagrams-in-a-string/description/
-
+https://leetcode.com/problems/find-all-anagrams-in-a-string
+#reach_0_state
+#unroll
+We unroll a hashmap untill it reach 0 keys
 """
 import unittest
 
 
 class Solution:
     def findAnagrams(self, s: str, p: str) -> list[int]:
-        ans = []
-        window_size = len(p)
-        if window_size > len(s):
-            return ans
-
-        # build ideal char freq
-        p_char_freq = {}
+        k = len(p)
+        if k > len(s):
+            return []
+        w = {}
+        # add char freq by negative for p, whenever the window sees the same character, we increment the val.
+        # whenever we reach 0 and the window has no keys, we know we have an answer
         for i in range(len(p)):
-            char = p[i]
-            p_char_freq[char] = p_char_freq.get(char, 0) + 1
-
-        window_char_freq = {}
-        # difference between window char_char_freq and p_char_freq. Whenever this is empty we know the window is ideal
-        diff_char_freq = {}
-
-        def update_diff_char_freq(char: str):
-            diff_char_freq[char] = window_char_freq[char] - p_char_freq.get(char, 0)
-            if diff_char_freq[char] == 0:
-                diff_char_freq.pop(char)
-
-        def add_to_char_freq(index: int):
-            char = s[index]
-            window_char_freq[char] = window_char_freq.get(char, 0) + 1
-            update_diff_char_freq(char)
-
-        def remove_from_cur_sum(index: int):
-            char = s[index]
-            window_char_freq[char] = window_char_freq[char] - 1
-            update_diff_char_freq(char)
-
-        def update_ans_if_window_is_ideal(index: int):
-            if len(diff_char_freq) == 0:
-                ans.append(index)
-
+            ch = p[i]
+            w[ch] = w.get(ch, 0) - 1
         # initial window
-        for i in range(window_size):
-            add_to_char_freq(i)
-        update_ans_if_window_is_ideal(0)
-
-        # Slide window
-        for i in range(window_size, len(s)):
-            add_to_char_freq(i)
-            remove_from_cur_sum(i - window_size)
-            update_ans_if_window_is_ideal(i - window_size + 1)
+        for i in range(k):
+            ch = s[i]
+            w[ch] = w.get(ch, 0) + 1
+            if w[ch] == 0:
+                w.pop(ch)
+        ans = []
+        i = k - 1
+        while True:
+            if len(w) == 0:
+                ans.append(i - k + 1)
+            i += 1
+            if i >= len(s):
+                break
+            # add new ch
+            ch = s[i]
+            w[ch] = w.get(ch, 0) + 1
+            if w[ch] == 0:
+                w.pop(ch)
+            # remove old ch
+            ch = s[i - k]
+            w[ch] = w.get(ch, 0) - 1
+            if w[ch] == 0:
+                w.pop(ch)
         return ans
 
 

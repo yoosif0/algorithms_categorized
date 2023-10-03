@@ -1,11 +1,11 @@
 """
+https://leetcode.com/problems/subarray-product-less-than-k/
+
 [10,5,2,6]
 10: add 10 to cache since it's less than 100 and add 1 to total  [10]
 5:  set cache to 15 (5*10), total = 3  [5], [10,5]
 2:  cache * num <100  set cache to 10 (5*2) total=5  [2], [5,2]
 6:  cache * num <100  set cache to cache * num total=8  [6], [5,2,6], [2,6]
-
-
 """
 import unittest
 from collections import deque

@@ -1,5 +1,5 @@
 """
-https://leetcode.com/problems/132-pattern/description/
+https://leetcode.com/problems/132-pattern/
 
 Sliding window doesn't work here because the 3 values don't need to be consecutive. Also we can't just keep
 track of min and max because the order of min, max, mid is relevant. You can't have the order switches to

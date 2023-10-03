@@ -38,36 +38,20 @@ import unittest
 class Solution:
     def maxVowels(self, s: str, k: int) -> int:
         vowels = {"a", "e", "i", "o", "u"}
-        ans = 0
-        window_vowel_count = 0
-
-        def and_to_window(index: int):
-            nonlocal window_vowel_count
-            char = s[index]
-            if char in vowels:
-                window_vowel_count += 1
-
-        def remove_form_window(index: int):
-            nonlocal window_vowel_count
-            char = s[index]
-            if char in vowels:
-                window_vowel_count -= 1
-
-        def update_ans_if_applicable():
-            nonlocal ans
-            ans = max(ans, window_vowel_count)
-
+        w = 0
         # initial window
         for i in range(k):
-            and_to_window(i)
-        update_ans_if_applicable()
-
+            w += 1 if s[i] in vowels else 0
+        ans = w
         # slide window
-        for i in range(k, len(s)):
-            and_to_window(i)
-            remove_form_window(i - k)
-            update_ans_if_applicable()
-
+        i = k - 1
+        while True:
+            ans = max(ans, w)
+            i += 1
+            if i == len(s):
+                break
+            w += 1 if s[i] in vowels else 0
+            w -= 1 if s[i - k] in vowels else 0
         return ans
 
 

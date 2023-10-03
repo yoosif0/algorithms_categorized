@@ -1,5 +1,5 @@
 """
-for:https://leetcode.com/problems/house-robber-ii/description/
+https://leetcode.com/problems/house-robber-ii/
 [30,1,5,22,60]
 30:incl:30 excl:0
 1: incl:1  excl:30

@@ -1,6 +1,5 @@
-import unittest
-
 """
+https://leetcode.com/problems/pascals-triangle
         1
        1,1
       1,2,1
@@ -10,6 +9,8 @@ import unittest
   1,6,15,20,15,6,1
  1,7,21,35,35,21,7,1
 """
+
+import unittest
 
 
 def getSumArr(arr: list[int]) -> list[int]:

@@ -13,9 +13,9 @@ class Solution:
                 if i == m - 1 or j == n - 1:
                     dp[i][j] = 1
                     continue
-                right = dp[i + 1][j]
-                down = dp[i][j + 1]
-                dp[i][j] = right + down
+                right = dp[i][j + 1]
+                down = dp[i + 1][j]
+                dp[i][j] = down + right
         return dp[0][0]
 
 

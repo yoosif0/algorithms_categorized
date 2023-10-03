@@ -28,8 +28,8 @@ class Solution:
             if prefix_sum > target:
                 # find best l to reduce window as much as possible
                 l = bisect_right(prefix_sums, prefix_sum - target)
-            window_size = r - l + 1
-            ans = min(window_size, ans)
+            m = r - l + 1
+            ans = min(m, ans)
         return 0 if ans == sys.maxsize else ans
 
 

@@ -1,40 +1,24 @@
 """
-https://leetcode.com/problems/maximum-average-subarray-i/description/
+https://leetcode.com/problems/maximum-average-subarray-i/
 """
 import unittest
 
 
 class Solution:
-    def findMaxAverage(self, nums: list[int], k: int) -> float:
-        ans = -float("inf")
-        cur_sum = 0
-
-        def add_num(index: int):
-            nonlocal cur_sum
-            num = nums[index]
-            cur_sum += num
-
-        def remove_num(index: int):
-            nonlocal cur_sum
-            num = nums[index]
-            cur_sum -= num
-
-        def update_ans_applicable():
-            nonlocal ans
-            cur_avg = cur_sum / k
-            ans = max(cur_avg, ans)
-
-        # initial window
+    def findMaxAverage(self, a: list[int], k: int) -> float:
+        w = 0
         for i in range(k):
-            add_num(i)
-        update_ans_applicable()
-
+            w += a[i]
+        max_sum = w
         # Slide window
-        for i in range(k, len(nums)):
-            add_num(i)
-            remove_num(i - k)
-            update_ans_applicable()
-        return ans
+        i = k - 1
+        while True:
+            max_sum = max(w, max_sum)
+            i += 1
+            if i == len(a):
+                break
+            w += a[i] - a[i - k]
+        return max_sum / k
 
 
 class Test(unittest.TestCase):

@@ -1,5 +1,5 @@
 """
-https://leetcode.com/problems/valid-palindrome/description/
+https://leetcode.com/problems/valid-palindrome/
 """
 import unittest
 import re

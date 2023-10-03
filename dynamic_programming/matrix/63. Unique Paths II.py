@@ -26,9 +26,9 @@ class Solution:
                 if i == m - 1 and j == n - 1:
                     dp[i][j] = 1
                     continue
-                right = dp[i + 1][j] if i < m - 1 else 0
-                down = dp[i][j + 1] if j < n - 1 else 0
-                dp[i][j] = right + down
+                right = dp[i][j + 1] if j < n - 1 else 0
+                down = dp[i + 1][j] if i < m - 1 else 0
+                dp[i][j] = down + right
         return dp[0][0]
 
 

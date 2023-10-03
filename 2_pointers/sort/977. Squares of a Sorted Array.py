@@ -1,5 +1,5 @@
 """
-https://leetcode.com/problems/squares-of-a-sorted-array/description/
+https://leetcode.com/problems/squares-of-a-sorted-array/
 
 The idea here is that the 2 extremes of left and right have the highest absolute numbers. This means
 we don't need to fully sort. We can have 2 pointers and compare whichever is higher, add the result to the

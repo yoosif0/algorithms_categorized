@@ -1,6 +1,8 @@
 import unittest
 
 """
+https://leetcode.com/problems/maximum-product-subarray
+
 [2,3,-2,4]
     meh:2  min:2   msf:2
 3:  meh:6  min:6   msf:6

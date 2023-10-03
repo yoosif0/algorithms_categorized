@@ -1,5 +1,5 @@
 """
-https://leetcode.com/problems/group-anagrams/description/
+https://leetcode.com/problems/group-anagrams/
 we know that 2 words are anagrames if they are the same if sorted
 """
 

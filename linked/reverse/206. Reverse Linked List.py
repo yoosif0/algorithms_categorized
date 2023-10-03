@@ -1,5 +1,5 @@
 """
-https://leetcode.com/problems/reverse-linked-list/description/
+https://leetcode.com/problems/reverse-linked-list/
 
 In linked lists, usually you can't go to the end of the list then start do changes because when you
 go to the end, you don't have access to the beginning values

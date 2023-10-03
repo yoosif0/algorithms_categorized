@@ -45,7 +45,7 @@ class Solution:
 
 
 class Test(unittest.TestCase):
-    def test_numberOfSetBits(self):
+    def test(self):
         t = Solution()
         self.assertEqual(t.longestPalindrome("aba"), "aba")
         self.assertEqual(t.longestPalindrome("cabac"), "cabac")

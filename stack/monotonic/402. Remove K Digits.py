@@ -1,5 +1,5 @@
 """
-https://leetcode.com/problems/remove-k-digits/description/
+https://leetcode.com/problems/remove-k-digits/
 4 removed k=1 3 removed k=2 2 removed k is complete. continue the number
 1
 

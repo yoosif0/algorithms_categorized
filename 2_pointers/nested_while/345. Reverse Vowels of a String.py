@@ -1,5 +1,5 @@
 """
-https://leetcode.com/problems/reverse-vowels-of-a-string/description/
+https://leetcode.com/problems/reverse-vowels-of-a-string/
 """
 import unittest
 

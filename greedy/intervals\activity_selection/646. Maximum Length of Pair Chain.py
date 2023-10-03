@@ -1,5 +1,5 @@
 """
-https://leetcode.com/problems/maximum-length-of-pair-chain/description/
+https://leetcode.com/problems/maximum-length-of-pair-chain/
 sort from least to most max then skip any overlap
 
 

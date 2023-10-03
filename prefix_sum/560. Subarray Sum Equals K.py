@@ -1,5 +1,5 @@
 """
-for https://leetcode.com/problems/subarray-sum-equals-k/
+https://leetcode.com/problems/subarray-sum-equals-k/
 
 Input: nums = [1,2,8,1,2,0,-5,1], k = 10
 1: save 1
