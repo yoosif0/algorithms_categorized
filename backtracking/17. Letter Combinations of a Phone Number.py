@@ -8,6 +8,8 @@ mno mno mno
 
 2
 abc
+#bounded
+#combination
 
 """
 import unittest

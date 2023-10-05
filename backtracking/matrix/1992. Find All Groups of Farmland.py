@@ -1,6 +1,7 @@
 """
 https://leetcode.com/problems/find-all-groups-of-farmland/
 traverse each island in for loop. while traversing, pass by coordinates
+#combination
 """
 import unittest
 

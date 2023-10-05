@@ -8,7 +8,8 @@ https://leetcode.com/problems/permutations/
 
 The first node has 4 branches. Each of those 4 have 3 branches, then 2, then 1. That's the first for loop loops through
 4 candidates then 3 then 2, etc
-
+#bounded
+#combination
 """
 
 

@@ -1,5 +1,6 @@
 """
 https://leetcode.com/problems/max-area-of-island/
+#optimization
 """
 import unittest
 

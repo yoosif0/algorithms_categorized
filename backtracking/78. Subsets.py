@@ -4,6 +4,8 @@ https://leetcode.com/problems/subsets
                      First Node
     1                        2                           3
 s  2  3                    s   3                         s
+#bounded
+#combination
 """
 
 import unittest

@@ -3,6 +3,7 @@ https://leetcode.com/problems/maximum-points-you-can-obtain-from-cards/
 [100,40,17,9,73,75]
 We either pick the first k from front or back or by combining them in circular connected way. The window can't go 
 the pass to the rest of the array. Time is O(k) and O(n)
+#circular
 """
 
 
