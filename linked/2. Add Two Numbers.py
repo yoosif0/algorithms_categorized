@@ -5,12 +5,7 @@ https://leetcode.com/problems/add-two-numbers/
 
 import unittest
 from typing import Optional
-
-
-class ListNode:
-    def __init__(self, val=0, next=None):
-        self.val = val
-        self.next = next
+from algoutils.list_node import ListNode
 
 
 def getAllVals(l: Optional[ListNode]):

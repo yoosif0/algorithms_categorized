@@ -20,13 +20,7 @@ r_max_excl:3
 
 from typing import Optional
 import unittest
-
-
-class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
+from algoutils.tree_node import TreeNode
 
 
 def dfs(x: Optional[TreeNode]):

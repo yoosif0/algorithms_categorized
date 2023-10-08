@@ -9,14 +9,7 @@ have side effect and keep track of max length.
 
 import unittest
 from typing import Optional
-
-
-# Definition for a binary tree node.
-class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
+from algoutils.tree_node import TreeNode
 
 
 class Solution:

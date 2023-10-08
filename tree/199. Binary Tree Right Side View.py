@@ -8,13 +8,7 @@ The difference here is that we pick the right most number in each level_arr in t
 from collections import deque
 import unittest
 from typing import Optional
-
-
-class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
+from algoutils.tree_node import TreeNode
 
 
 class Solution:

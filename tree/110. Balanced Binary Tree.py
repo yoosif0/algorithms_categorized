@@ -6,14 +6,7 @@ get depth of left and right and check if there is no more difference than one
 
 import unittest
 from typing import Optional
-
-
-# Definition for a binary tree node.
-class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
+from algoutils.tree_node import TreeNode
 
 
 class NotBalancedError(Exception):

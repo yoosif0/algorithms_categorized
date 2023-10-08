@@ -5,13 +5,7 @@ value on the right. We just search for the first node that has a value greater t
 one and less than or equal the other.
 """
 import unittest
-
-
-class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
+from algoutils.tree_node import TreeNode
 
 
 class Solution:

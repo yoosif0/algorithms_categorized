@@ -5,14 +5,7 @@ https://leetcode.com/problems/subtree-of-another-tree/
 import unittest
 from typing import Optional
 from hashlib import sha256
-
-
-class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
-        self.hash = None
+from algoutils.tree_node import TreeNode
 
 
 class FoundSubtree(Exception):

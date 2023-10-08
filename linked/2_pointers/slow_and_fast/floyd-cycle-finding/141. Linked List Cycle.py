@@ -4,19 +4,7 @@ https://leetcode.com/problems/linked-list-cycle/
 """
 from typing import Optional
 import unittest
-
-
-class ListNode:
-    def __init__(self, val=0, next=None):
-        self.val = val
-        self.next = next
-
-    def __repr__(self, level=0):
-        ret = "\t" * level + repr(self.val) + "\n"
-        if self.next:
-            ret += self.next.__repr__(level + 1)
-        return ret
-
+from algoutils.list_node import ListNode
 
 """
 2 solutions work here. The easier one is having a set with pointers to node. Once a node is repeated we know that
