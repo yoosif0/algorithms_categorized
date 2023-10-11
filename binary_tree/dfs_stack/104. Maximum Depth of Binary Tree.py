@@ -1,5 +1,10 @@
 """
 https://leetcode.com/problems/maximum-depth-of-binary-tree/
+
+         1
+       2    3
+      4 5  6  7
+         8
 """
 
 import unittest

@@ -18,22 +18,18 @@ import unittest
 
 class Solution:
     def isValid(self, s: str) -> bool:
-        map = {"(": ")", "{": "}", "[": "]"}
-        stack = []
-        for char in s:
+        m = {"(": ")", "{": "}", "[": "]"}
+        st = []
+        for ch in s:
             # if it's an opening char, append to stack
-            if char in map:
-                stack.append(char)
-                continue
-            if len(stack) == 0:
-                return False
+            if ch in m:
+                st.append(ch)
             # check if the closing char match what it should close
-            last_open_char = stack[-1]
-            if char == map[last_open_char]:
-                stack.pop()
+            elif st and ch == m[st[-1]]:
+                st.pop()
             else:
                 return False
-        return len(stack) == 0
+        return len(st) == 0
 
 
 class Test(unittest.TestCase):

@@ -18,18 +18,17 @@ def str_to_op(num1: int, num2: int, op: str):
 
 
 class Solution:
-    def evalRPN(self, tokens: list[str]) -> int:
-        num_stack = []
-        for i in range(0, len(tokens)):
-            token = tokens[i]
-            if token not in operations_set:
-                num_stack.append(int(token))
+    def evalRPN(self, a: list[str]) -> int:
+        st = []
+        for ch in a:
+            if ch not in operations_set:
+                st.append(int(ch))
             else:
-                popped_1 = int(num_stack.pop())
-                popped_2 = int(num_stack.pop())
-                result = str_to_op(popped_2, popped_1, token)
-                num_stack.append(result)
-        return num_stack[-1]
+                ppd = int(st.pop())
+                ppd2 = int(st.pop())
+                result = str_to_op(ppd2, ppd, ch)
+                st.append(result)
+        return st[-1]
 
 
 class Test(unittest.TestCase):

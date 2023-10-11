@@ -10,8 +10,8 @@ from algoutils.tree_node import TreeNode
 # stack
 class Solution:
     def inorderTraversal(self, tn: Optional[TreeNode]) -> list[int]:
-        st = []
         ans = []
+        st = []
         while st or tn:
             if tn:
                 st.append(tn)

@@ -7,19 +7,16 @@ import unittest
 
 
 class Solution:
-    def simplifyPath(self, path: str) -> str:
-        folders = []
-        splitted = path.split("/")
-        for thing in splitted:
-            if thing == "..":
-                if not folders:
-                    continue
-                folders.pop()
-            elif len(thing) == 0 or thing == ".":
+    def simplifyPath(self, s: str) -> str:
+        st = []
+        for ch in s.split("/"):
+            if len(ch) == 0:
                 continue
-            else:
-                folders.append(thing)
-        return "/" + "/".join(folders)
+            if ch not in ("..", "."):
+                st.append(ch)
+            elif st and ch == "..":
+                st.pop()
+        return "/" + "/".join(st)
 
 
 class Test(unittest.TestCase):
