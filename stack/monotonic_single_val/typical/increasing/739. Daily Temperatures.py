@@ -6,21 +6,20 @@ https://leetcode.com/problems/daily-temperatures/
 5:72 [(76,6),(72,5)] ans 1
 you pop when num is greater than or equal what's in stack. Stack should include something that represent time (not only value)
 """
-from collections import deque
 import unittest
 
 
 class Solution:
-    def dailyTemperatures(self, temperatures: list[int]) -> list[int]:
-        stack = []
-        ans = deque([])
-        for i in range(len(temperatures) - 1, -1, -1):
-            temp = temperatures[i]
-            while len(stack) > 0 and temp >= temperatures[stack[-1]]:
-                stack.pop()
-            ans.appendleft(0 if len(stack) == 0 else stack[-1] - i)
-            stack.append(i)
-        return list(ans)
+    def dailyTemperatures(self, a: list[int]) -> list[int]:
+        st = []
+        for i in range(len(a)):
+            while st and a[i] > a[st[-1]]:
+                ppd = st.pop()
+                a[ppd] = i - ppd
+            st.append(i)
+        while st:
+            a[st.pop()] = 0
+        return a
 
 
 class Test(unittest.TestCase):

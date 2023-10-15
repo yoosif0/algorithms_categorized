@@ -10,19 +10,23 @@ https://leetcode.com/problems/online-stock-span/
 5:75:4 [(0,100),(1,80),(4,75)] 2 popped
 
 never pop if less. pop if more, decreasing monostack
+
+
+[100,80,60,70,60,75,85]
+
 """
 import unittest
 
 
 class StockSpanner:
     def __init__(self):
-        self.stack = []
+        self.st = []
 
-    def next(self, price: int) -> int:
+    def next(self, x: int) -> int:
         ans = 1
-        while self.stack and price >= self.stack[-1][1]:
-            ans += self.stack.pop()[0]
-        self.stack.append((ans, price))
+        while self.st and x >= self.st[-1][0]:
+            ans += self.st.pop()[1]
+        self.st.append((x, ans))
         return ans
 
 

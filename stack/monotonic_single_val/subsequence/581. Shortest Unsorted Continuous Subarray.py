@@ -12,22 +12,22 @@ import unittest
 
 
 class Solution:
-    def findUnsortedSubarray(self, nums: list[int]) -> int:
+    def findUnsortedSubarray(self, a: list[int]) -> int:
         # find start index
-        start = len(nums)
-        stack = []
-        for i in range(len(nums)):
-            while stack and nums[i] < nums[stack[-1]]:
-                start = min(start, stack.pop())
-            stack.append(i)
+        start = len(a)
+        st = []
+        for i in range(len(a)):
+            while st and a[i] < a[st[-1]]:
+                start = min(start, st.pop())
+            st.append(i)
 
         # find end index
         end = -1
-        stack = []
-        for i in range(len(nums) - 1, -1, -1):
-            while stack and nums[i] > nums[stack[-1]]:
-                end = max(end, stack.pop())
-            stack.append(i)
+        st = []
+        for i in range(len(a) - 1, -1, -1):
+            while st and a[i] > a[st[-1]]:
+                end = max(end, st.pop())
+            st.append(i)
 
         return 0 if end == -1 else end - start + 1
 

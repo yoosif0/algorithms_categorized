@@ -1,6 +1,8 @@
 """
 https://leetcode.com/problems/subarray-sum-equals-k/
 
+We here also can't use sliding window because the condition is monotonic
+#subarr
 Input: nums = [1,2,8,1,2,0,-5,1], k = 10
 1: save 1
 2: save 3; we don't have -7 saved
@@ -15,16 +17,15 @@ import unittest
 
 
 class Solution:
-    def subarraySum(self, nums: list[int], k: int) -> int:
-        prefix_sum = 0
+    def subarraySum(self, a: list[int], k: int) -> int:
+        cur = 0
         ans = 0
-        freq_prefix_sums = {0: 1}
-        for num in nums:
-            prefix_sum += num
-            target = prefix_sum - k
-            if target in freq_prefix_sums:
-                ans += freq_prefix_sums[target]
-            freq_prefix_sums[prefix_sum] = freq_prefix_sums.get(prefix_sum, 0) + 1
+        m = {0: 1}
+        for i in range(len(a)):
+            cur += a[i]
+            if cur - k in m:
+                ans += m[cur - k]
+            m[cur] = m.get(cur, 0) + 1
         return ans
 
 
@@ -32,6 +33,7 @@ class Test(unittest.TestCase):
     def test(self):
         t = Solution()
         self.assertEqual(t.subarraySum([1, 2, 8, 1, 2, 0, -5, 1], 10), 2)
+        self.assertEqual(t.subarraySum([1, 1, 1], 2), 2)
 
 
 if __name__ == "__main__":

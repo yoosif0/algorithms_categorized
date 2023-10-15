@@ -15,31 +15,32 @@ not_my_solution_fully
 
 """
 
+import sys
 import unittest
 
 
 class Solution:
     def find132pattern(self, nums: list[int]) -> bool:
-        three_candidates = []
-        two_candidate = None
+        st = []
+        two = None
         for i in range(len(nums) - 1, -1, -1):
-            if two_candidate and nums[i] < two_candidate:
+            if two and nums[i] < two:
                 # found the 1_candidate
                 return True
-            while three_candidates and nums[i] > three_candidates[-1]:
-                two_candidate = three_candidates.pop()
-            three_candidates.append(nums[i])
+            while st and nums[i] > st[-1]:
+                two = st.pop()
+            st.append(nums[i])
         return False
 
 
 class Test(unittest.TestCase):
     def test(self):
         obj = Solution()
-        # self.assertEqual(obj.find132pattern([3, 1, 4, 2]), True)
-        # self.assertEqual(obj.find132pattern([1, 2, 3, 4]), False)
-        # self.assertEqual(obj.find132pattern([-1, 3, 2]), True)
+        self.assertEqual(obj.find132pattern([3, 1, 4, 2]), True)
+        self.assertEqual(obj.find132pattern([1, 2, 3, 4]), False)
+        self.assertEqual(obj.find132pattern([-1, 3, 2]), True)
         self.assertEqual(obj.find132pattern([3, 5, 0, 3, 4]), True)
-        # self.assertEqual(obj.find132pattern([1, 0, 1, -4, -3]), False)
+        self.assertEqual(obj.find132pattern([1, 0, 1, -4, -3]), False)
 
 
 """
