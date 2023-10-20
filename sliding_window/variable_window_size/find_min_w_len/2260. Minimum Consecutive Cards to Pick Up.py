@@ -1,6 +1,7 @@
 """
 https://leetcode.com/problems/minimum-consecutive-cards-to-pick-up/
 #store_index
+#store_last_index
 #unique
 """
 
@@ -12,16 +13,16 @@ import sys
 class Solution:
     def minimumCardPickup(self, a: list[int]) -> int:
         ans = sys.maxsize
-        num_to_i: typing.Dict[int, int] = {}
+        m = {}
         l = 0
         for r in range(len(a)):
-            if a[r] in num_to_i and num_to_i[a[r]] >= l:
+            if a[r] in m and m[a[r]] >= l:
                 # w_size is the min window size that accompany the same number
-                w_size = r - num_to_i[a[r]] + 1
+                w_size = r - m[a[r]] + 1
                 ans = min(w_size, ans)
                 # shift l to the right of the problematic num
-                l = num_to_i[a[r]] + 1
-            num_to_i[a[r]] = r
+                l = m[a[r]] + 1
+            m[a[r]] = r
         return -1 if ans == sys.maxsize else ans
 
 

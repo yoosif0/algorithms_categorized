@@ -13,6 +13,7 @@ d
 a 4
 
 #store_index
+#store_last_index
 #unique
 The idea here is to store the index of the last incident of a character we saw before to 
 make it the "l" for the window when the window is no longer sustainable
