@@ -18,7 +18,7 @@ class Solution:
         m = {0: -1}
         for i in range(len(a)):
             cur = (cur + a[i]) % k
-            if (cur) in m:
+            if cur in m:
                 if i - m[cur] > 1:
                     return True
             else:
