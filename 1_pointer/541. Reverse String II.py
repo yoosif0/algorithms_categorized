@@ -6,17 +6,16 @@ import unittest
 
 class Solution:
     def reverseStr(self, s: str, k: int) -> str:
-        should_reverse = True
-        sentence = []
-        word = []
+        fl = True
+        ans = []
+        a = []
         for i in range(len(s)):
-            word.append(s[i])
-            if len(word) == k or i == len(s) - 1:
-                word = word[::-1] if should_reverse else word
-                sentence.append("".join(word))
-                should_reverse = not should_reverse
-                word = []
-        return "".join(sentence)
+            a.append(s[i])
+            if len(a) == k or i == len(s) - 1:
+                ans.append("".join(a[::-1] if fl else a))
+                fl = not fl
+                a = []
+        return "".join(ans)
 
 
 class Test(unittest.TestCase):

@@ -7,14 +7,14 @@ import unittest
 
 
 class Solution:
-    def longestCommonPrefix(self, strs: list[str]) -> str:
-        strs.sort()
-        first = strs[0]
-        last = strs[len(strs) - 1]
-        common = 0
-        while common < len(first) and first[0 : common + 1] == last[0 : common + 1]:
-            common += 1
-        return first[0:common]
+    def longestCommonPrefix(self, a: list[str]) -> str:
+        a.sort()
+        ans = a[0]
+        last = a[len(a) - 1]
+        i = 0
+        while i < len(ans) and ans[0 : i + 1] == last[0 : i + 1]:
+            i += 1
+        return ans[0:i]
 
 
 class Test(unittest.TestCase):

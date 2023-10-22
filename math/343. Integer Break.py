@@ -44,15 +44,15 @@ class Solution:
     def integerBreak(self, n: int) -> int:
         if n <= 3:
             return n - 1
-        threes = n // 3
-        twos = 0
-        remainder = n % 3
-        if remainder == 1:
-            threes -= 1
-            twos += 2
-        if remainder == 2:
-            twos += 1
-        return pow(3, threes) * pow(2, twos)
+        th = n // 3
+        tw = 0
+        r = n % 3
+        if r == 1:
+            th -= 1
+            tw += 2
+        elif r == 2:
+            tw += 1
+        return pow(3, th) * pow(2, tw)
 
 
 class Test(unittest.TestCase):
