@@ -4,22 +4,13 @@ https://leetcode.com/problems/k-closest-points-to-origin/
 
 import math
 import unittest
-import heapq
 
 
 class Solution:
-    def kClosest(self, points: list[list[int]], k: int) -> list[list[int]]:
-        distances = []
-        for point in points:
-            distance = math.sqrt(point[0] ** 2 + point[1] ** 2)
-            tup = (point, distance)
-            distances.append(tup)
-        distances.sort(key=lambda x: x[1])
-        closest_tuples = distances[0:k]
-        ans = []
-        for tup in closest_tuples:
-            ans.append(tup[0])
-        return ans
+    def kClosest(self, a: list[list[int]], k: int) -> list[list[int]]:
+        # sort by distance equation
+        a.sort(key=lambda x: x[0] ** 2 + x[1] ** 2)
+        return a[:k]
 
 
 class Test(unittest.TestCase):

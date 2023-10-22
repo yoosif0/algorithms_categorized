@@ -1,16 +1,16 @@
 import unittest
 
 
-def dec2bin(number: int):
+def dec2bin(n: int):
     m = []
-    while number:
-        m.append(number & 1)
-        number = number // 2
+    while n:
+        m.append(n & 1)
+        n = n // 2
     return "".join(map(str, m[::-1]))
 
 
-class TestDecToBinary(unittest.TestCase):
-    def test_memoize(self):
+class Test(unittest.TestCase):
+    def test(self):
         self.assertEqual(dec2bin(1), "1")
         self.assertEqual(dec2bin(2), "10")
         self.assertEqual(dec2bin(3), "11")

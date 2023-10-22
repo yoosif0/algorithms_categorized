@@ -7,24 +7,15 @@ import unittest
 class Solution:
     def isMonotonic(self, a: list[int]) -> bool:
         # determine based on the first couple of nums whether the array should increase or decrease
-        i = 1
-        should_increase = True
-        while i < len(a):
-            if a[i] == a[0]:
-                i += 1
-            elif a[i] > a[0]:
-                should_increase = True
-                break
-            else:
-                should_increase = False
-                break
-        # based on whether it should increase or not, check the remaining numbers
-        for j in range(i + 1, len(a)):
-            if (a[j] >= a[j - 1] and should_increase) or (
-                a[j] <= a[j - 1] and not should_increase
-            ):
-                pass
-            else:
+        fl = True
+        i = 0
+        while i < len(a) - 1 and a[i] == a[0]:
+            i += 1
+        if a[i] < a[0]:
+            fl = False
+        # check
+        for i in range(1, len(a)):
+            if a[i] != a[i - 1] and (a[i] >= a[i - 1]) != fl:
                 return False
         return True
 

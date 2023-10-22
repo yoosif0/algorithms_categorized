@@ -1,5 +1,5 @@
 """
-https://leetcode.com/problems/time-based-key-value-store/
+https://leetcode.com/problems/time-based-k-value-store/
 [0,1,2,3,4,5,6,7,10,16,17,18,19,20]
 l=0 m=6; mv=6; r=13; rv=20 
 l=6 lv=6; m=9; mv=16;r=13; rv=20
@@ -16,48 +16,30 @@ Note: time limit exceeded
 """
 
 import unittest
-from dataclasses import dataclass
-from typing import Dict
-
-
-@dataclass
-class TimedVal:
-    timestamp: int
-    value: str
+import bisect
 
 
 class TimeMap:
     def __init__(self):
-        self.o: Dict[str, list[TimedVal]] = {}
+        self.t = {}
+        self.v = {}
 
-    def bisect_left(self, key: str, target: int) -> int:
-        timed_vals = self.o[key]
-        lo = 0
-        hi = len(timed_vals)
-        while lo < hi:
-            mid = (hi + lo) // 2
-            mid_val = timed_vals[mid].timestamp
-            if mid_val < target:
-                lo = mid + 1
-            else:
-                hi = mid
-        return lo
+    def set(self, k: str, v: str, t: int) -> None:
+        if k not in self.t:
+            self.t[k] = []
+            self.v[k] = []
+        self.t[k].append(t)
+        self.v[k].append(v)
 
-    def set(self, key: str, value: str, timestamp: int) -> None:
-        if key not in self.o:
-            self.o[key] = []
-        self.o[key].append(TimedVal(timestamp, value))
-
-    def get(self, key: str, timestamp: int) -> str:
-        if key not in self.o:
+    def get(self, k: str, t: int) -> str:
+        if k not in self.t:
             return ""
-        arr = self.o[key]
-        index = self.bisect_left(key, timestamp)
-        if index == len(arr) or timestamp < arr[index].timestamp:
-            if index - 1 < 0:
+        i = bisect.bisect_left(self.t[k], t)
+        if i == len(self.t[k]) or t < self.t[k][i]:
+            if i - 1 < 0:
                 return ""
-            return arr[index - 1].value
-        return arr[index].value
+            return self.v[k][i - 1]
+        return self.v[k][i]
 
 
 class Test(unittest.TestCase):
