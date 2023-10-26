@@ -3,20 +3,13 @@ https://leetcode.com/problems/search-insert-position/
 """
 
 
+import bisect
 import unittest
 
 
 class Solution:
-    def searchInsert(self, a: list[int], target: int) -> int:
-        l = 0
-        r = len(a)
-        while l < r:
-            m = (r + l) // 2
-            if a[m] < target:
-                l = m + 1
-            else:
-                r = m
-        return l
+    def searchInsert(self, a: list[int], t: int) -> int:
+        return bisect.bisect_left(a, t)
 
 
 class Test(unittest.TestCase):

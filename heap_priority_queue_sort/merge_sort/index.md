@@ -1,0 +1,1 @@
+2 arrays or sub arrays are already sorted and 2 elements compete on which will fill a space. There should be some extra space because we can't do this in place. This does not work if the 2 sub arrays or arrays aren't sorted
