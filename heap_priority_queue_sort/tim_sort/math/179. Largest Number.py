@@ -1,7 +1,6 @@
 """
 https://leetcode.com/problems/largest-number/
 
-#math
 if they are equal compare with the next digit. for example, 3 and 30 are equal in the first  digit, therefore we compare 3 to 0 and this mean we favor 3. The whole trick here is the compare function where when we compare which of 2 stringified numbers should come first, we compare
 
 35/3  11r2

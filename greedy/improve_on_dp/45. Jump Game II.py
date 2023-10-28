@@ -35,18 +35,17 @@ import unittest
 
 
 class Solution:
-    def jump(self, nums: list[int]) -> int:
-        if len(nums) <= 1:
+    def jump(self, a: list[int]) -> int:
+        if len(a) <= 1:
             return 0
         ans = 1
-        max_reach = nums[0]
-        jump_end = nums[0]
-        for i in range(1, len(nums) - 1):
-            max_reach = max(i + nums[i], max_reach)
-            if i == jump_end:
+        cur = a[0]
+        for i in range(1, len(a) - 1):
+            cur = max(i + a[i], cur)
+            if i == a[0]:
                 ans += 1
-                jump_end = max_reach
-            if jump_end >= len(nums) - 1:
+                a[0] = cur
+            if a[0] >= len(a) - 1:
                 break
         return ans
 

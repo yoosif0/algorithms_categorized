@@ -10,9 +10,8 @@ class Solution:
     def longestCommonPrefix(self, a: list[str]) -> str:
         a.sort()
         ans = a[0]
-        last = a[len(a) - 1]
         i = 0
-        while i < len(ans) and ans[0 : i + 1] == last[0 : i + 1]:
+        while i < len(ans) and ans[0 : i + 1] == a[-1][0 : i + 1]:
             i += 1
         return ans[0:i]
 

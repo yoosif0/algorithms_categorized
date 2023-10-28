@@ -1,5 +1,6 @@
 """
 https://leetcode.com/problems/valid-parentheses/
+also solves: https://app.codility.com/programmers/lessons/7-stacks_and_queues/nesting/ and https://app.codility.com/programmers/lessons/7-stacks_and_queues/brackets/
 {[()()[]]}
 {[(
 {[
@@ -40,6 +41,7 @@ class Test(unittest.TestCase):
         self.assertEqual(obj.isValid("(]"), False)
         self.assertEqual(obj.isValid("{[()()[]]}"), True)
         self.assertEqual(obj.isValid("{"), False)
+        self.assertEqual(obj.isValid("((()))((()))"), True)
 
 
 if __name__ == "__main__":

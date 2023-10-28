@@ -4,7 +4,6 @@ https://leetcode.com/problems/smallest-value-of-the-rearranged-number/
 7650
 
 if 0 is the first, just substiue. sort reverse when n<0
-#math
 """
 
 import unittest

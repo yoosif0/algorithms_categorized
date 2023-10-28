@@ -10,26 +10,25 @@ import unittest
 
 
 class Solution:
-    def productExceptSelf(self, nums: list[int]) -> list[int]:
+    def productExceptSelf(self, a: list[int]) -> list[int]:
         # fill before product
-        before_product = []
+        l = []
         cur = 1
-        for num in nums:
-            before_product.append(cur)
-            cur *= num
+        for i in a:
+            l.append(cur)
+            cur *= i
 
         # fill after product
-        after_product = [1 for _ in range(len(nums))]
+        r = [1 for _ in range(len(a))]
         cur = 1
-        for i in range(len(nums) - 1, -1, -1):
-            num = nums[i]
-            after_product[i] = cur
-            cur *= num
+        for i in range(len(a) - 1, -1, -1):
+            r[i] = cur
+            cur *= a[i]
 
         # fill ans
         ans = []
-        for i in range(len(nums)):
-            ans.append(before_product[i] * after_product[i])
+        for i in range(len(a)):
+            ans.append(l[i] * r[i])
         return ans
 
 

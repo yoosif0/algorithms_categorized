@@ -7,12 +7,12 @@ import unittest
 
 class Solution:
     def maxChunksToSorted(self, a: list[int]) -> int:
-        max_val = -sys.maxsize
+        cur = -sys.maxsize
         ans = 0
         for i in range(len(a)):
-            max_val = max(a[i], max_val)
+            cur = max(a[i], cur)
             # if number is in the ideal place, increase ans
-            if max_val == i:
+            if cur == i:
                 ans += 1
         return ans
 
