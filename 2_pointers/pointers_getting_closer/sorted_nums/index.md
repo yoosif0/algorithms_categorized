@@ -1,0 +1,3 @@
+- from O(n^3) triple loop to O(n^2) double loop or from O(n^4) to O(n^3)
+- we fixate an i and have 2 other pointers which are l and r. we determine whether we'll shift r to left or l to right based on a condition. for example in 3 sum, if the sum is greater than 0 then we shift r to left, otherwise we shift l to right
+- sorting here helps

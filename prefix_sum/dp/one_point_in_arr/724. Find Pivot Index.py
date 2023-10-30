@@ -16,14 +16,13 @@ prefix: [2,3,2]
 if what's on the right of the pivot equals to what's on the right
 
 """
+from itertools import accumulate
 import unittest
 
 
 class Solution:
     def pivotIndex(self, a: list[int]) -> int:
-        dp = [0 for _ in range(len(a) + 1)]
-        for i in range(1, len(dp)):
-            dp[i] = dp[i - 1] + a[i - 1]
+        dp = list(accumulate(a, initial=0))
         for i in range(1, len(dp)):
             if dp[-1] - dp[i] == dp[i - 1]:
                 return i - 1

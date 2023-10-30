@@ -7,42 +7,38 @@ import unittest
 
 
 class Node:
-    def __init__(self, char: str):
-        self.char = char
-        self.dict: Dict[str, Node] = {}
-        self.completes_a_word = False
+    def __init__(self, ch: str):
+        self.ch = ch
+        self.m = {}
+        self.fl = False
 
 
 class WordDictionary:
     def __init__(self):
-        self.tree = Node("")
+        self.t = Node("")
 
-    def addWord(self, word: str) -> None:
-        pointer = self.tree
-        for char in word:
-            if char not in pointer.dict:
-                pointer.dict[char] = Node(char)
-            pointer = pointer.dict[char]
-        pointer.completes_a_word = True
+    def addWord(self, s: str) -> None:
+        cur = self.t
+        for ch in s:
+            if ch not in cur.m:
+                cur.m[ch] = Node(ch)
+            cur = cur.m[ch]
+        cur.fl = True
 
-    def search_inner(self, word: str, pointer: Node) -> bool:
-        pointer = self.tree if not pointer else pointer
-        for i, char in enumerate(word):
-            if char == ".":
-                for char in pointer.dict:
-                    suffix = word[i + 1 :]
-                    res = self.search_inner(suffix, pointer.dict[char])
-                    if res:
+    def rr(self, s: str, cur: Node) -> bool:
+        for i, ch in enumerate(s):
+            if ch == ".":
+                for ch in cur.m:
+                    if self.rr(s[i + 1 :], cur.m[ch]):
                         return True
                 return False
-            else:
-                if char not in pointer.dict:
-                    return False
-                pointer = pointer.dict[char]
-        return pointer.completes_a_word
+            if ch not in cur.m:
+                return False
+            cur = cur.m[ch]
+        return cur.fl
 
-    def search(self, word: str) -> bool:
-        return self.search_inner(word, self.tree)
+    def search(self, s: str) -> bool:
+        return self.rr(s, self.t)
 
 
 class Test(unittest.TestCase):

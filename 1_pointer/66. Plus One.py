@@ -7,16 +7,16 @@ import unittest
 
 class Solution:
     def plusOne(self, a: list[int]) -> list[int]:
-        r = len(a) - 1
+        i = len(a) - 1
         while True:
-            if r == -1:
+            if i == -1:
                 return [1] + a
-            if a[r] != 9:
-                a[r] += 1
+            if a[i] != 9:
+                a[i] += 1
                 return a
             else:
-                a[r] = 0
-                r -= 1
+                a[i] = 0
+                i -= 1
 
 
 class Test(unittest.TestCase):

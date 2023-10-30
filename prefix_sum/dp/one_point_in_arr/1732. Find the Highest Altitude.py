@@ -2,17 +2,13 @@
 https://leetcode.com/problems/find-the-highest-altitude/
 
 """
-import sys
+from itertools import accumulate
 import unittest
 
 
 class Solution:
     def largestAltitude(self, a: list[int]) -> int:
-        cur = 0
-        ans = -sys.maxsize
-        for i in range(len(a)):
-            cur += a[i]
-            ans = max(cur, ans)
+        ans = max(list(accumulate(a, initial=0)))
         # we can't fall below 0 (hence the max)
         return max(0, ans)
 

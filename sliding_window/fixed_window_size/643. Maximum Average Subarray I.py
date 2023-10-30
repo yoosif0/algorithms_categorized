@@ -9,16 +9,16 @@ class Solution:
         w = 0
         for i in range(k):
             w += a[i]
-        max_sum = w
+        ans = w
         # Slide window
         i = k - 1
         while True:
-            max_sum = max(w, max_sum)
+            ans = max(w, ans)
             i += 1
             if i == len(a):
                 break
             w += a[i] - a[i - k]
-        return max_sum / k
+        return ans / k
 
 
 class Test(unittest.TestCase):

@@ -3,17 +3,13 @@ https://leetcode.com/problems/minimum-value-to-get-positive-step-by-step-sum/
 We need to let the whole prefix sum arr positive so we just identify the lowest spot and make sure 
 the starting element will cover it's negativity
 """
-import sys
+from itertools import accumulate
 import unittest
 
 
 class Solution:
     def minStartValue(self, a: list[int]) -> int:
-        cur = 0
-        ans = sys.maxsize
-        for i in range(len(a)):
-            cur += a[i]
-            ans = min(cur, ans)
+        ans = min(list(accumulate(a, initial=0)))
         # the start value should be positive (hence the "max")
         return max(-ans + 1, 1)
 

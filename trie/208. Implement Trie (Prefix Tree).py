@@ -6,38 +6,38 @@ import unittest
 
 
 class Node:
-    def __init__(self, char: str):
-        self.char = char
-        self.dict: Dict[str, Node] = {}
-        self.completes_a_word = False
+    def __init__(self, ch: str):
+        self.ch = ch
+        self.m = {}
+        self.fl = False
 
 
 class Trie:
     def __init__(self):
-        self.tree = Node("")
+        self.t = Node("")
 
-    def insert(self, word: str) -> None:
-        pointer = self.tree
-        for char in word:
-            if char not in pointer.dict:
-                pointer.dict[char] = Node(char)
-            pointer = pointer.dict[char]
-        pointer.completes_a_word = True
+    def insert(self, s: str) -> None:
+        cur = self.t
+        for ch in s:
+            if ch not in cur.m:
+                cur.m[ch] = Node(ch)
+            cur = cur.m[ch]
+        cur.fl = True
 
-    def search(self, word: str) -> bool:
-        pointer = self.tree
-        for char in word:
-            if char not in pointer.dict:
+    def search(self, s: str) -> bool:
+        cur = self.t
+        for ch in s:
+            if ch not in cur.m:
                 return False
-            pointer = pointer.dict[char]
-        return pointer.completes_a_word
+            cur = cur.m[ch]
+        return cur.fl
 
-    def startsWith(self, prefix: str) -> bool:
-        pointer = self.tree
-        for char in prefix:
-            if char not in pointer.dict:
+    def startsWith(self, s: str) -> bool:
+        cur = self.t
+        for ch in s:
+            if ch not in cur.m:
                 return False
-            pointer = pointer.dict[char]
+            cur = cur.m[ch]
         return True
 
 

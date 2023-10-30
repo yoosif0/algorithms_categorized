@@ -2,6 +2,7 @@
 https://leetcode.com/problems/longest-subsequence-with-limited-sum/
 #sorting_helps
 """
+from itertools import accumulate
 import unittest
 import bisect
 
@@ -9,9 +10,7 @@ import bisect
 class Solution:
     def answerQueries(self, a: list[int], req: list[int]) -> list[int]:
         a.sort()
-        # fill prefix sum
-        for i in range(1, len(a)):
-            a[i] = a[i - 1] + a[i]
+        a = list(accumulate(a))
         # binary search
         for i in range(len(req)):
             req[i] = bisect.bisect_right(a, req[i])

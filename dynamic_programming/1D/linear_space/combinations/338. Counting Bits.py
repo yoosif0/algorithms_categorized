@@ -1,6 +1,7 @@
 """
 #combinations
 """
+from itertools import accumulate
 import unittest
 
 
@@ -9,7 +10,7 @@ class Solution:
         dp = [0 for _ in range(n + 1)]
         for i in range(1, n + 1):
             dp[i] = int(i & 1) + dp[i // 2]
-        return dp[n]
+        return dp
 
 
 class Test(unittest.TestCase):
