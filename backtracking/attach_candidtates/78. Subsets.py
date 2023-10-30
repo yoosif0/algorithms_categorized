@@ -12,15 +12,15 @@ import unittest
 
 
 class Solution:
-    def subsets(self, nums: list[int]) -> list[list[int]]:
+    def subsets(self, a: list[int]) -> list[list[int]]:
         ans = []
 
         def dfs(tmp: list[int], cs: list[int]):
             ans.append(tmp)
-            for i, num in enumerate(cs):
-                dfs([*tmp, num], cs[i + 1 :])
+            for i, n in enumerate(cs):
+                dfs([*tmp, n], cs[i + 1 :])
 
-        dfs([], nums)
+        dfs([], a)
         return ans
 
 

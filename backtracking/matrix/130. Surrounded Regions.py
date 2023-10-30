@@ -28,8 +28,7 @@ class Solution:
         # Move through all 4 boundaries
         for i, row in enumerate(grid):
             for j, _ in enumerate(row):
-                at_border = i == 0 or i == m - 1 or j == 0 or j == n - 1
-                if at_border and grid[i][j] == "0":
+                if (i == 0 or i == m - 1 or j == 0 or j == n - 1) and grid[i][j] == "0":
                     dfs(i, j)
 
         for i, row in enumerate(grid):

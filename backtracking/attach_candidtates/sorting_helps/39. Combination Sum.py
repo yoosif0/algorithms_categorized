@@ -15,20 +15,20 @@ import unittest
 
 
 class Solution:
-    def combinationSum(self, nums: list[int], target: int) -> list[list[int]]:
+    def combinationSum(self, a: list[int], trg: int) -> list[list[int]]:
         ans = []
-        nums.sort()
+        a.sort()
 
-        def dfs(tmp: list[int], cs: list[int], total: int):
-            if total == target:
+        def dfs(tmp: list[int], cs: list[int], ttl: int):
+            if ttl == trg:
                 ans.append(tmp)
                 return
             for i, c in enumerate(cs):
-                if total + c > target:
+                if ttl + c > trg:
                     break
-                dfs([*tmp, c], cs[i:], total + c)
+                dfs([*tmp, c], cs[i:], ttl + c)
 
-        dfs([], nums, 0)
+        dfs([], a, 0)
         return ans
 
 

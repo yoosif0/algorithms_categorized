@@ -12,18 +12,18 @@ import unittest
 
 
 class Solution:
-    def subsetsWithDup(self, nums: list[int]) -> list[list[int]]:
+    def subsetsWithDup(self, a: list[int]) -> list[list[int]]:
         ans = []
-        nums.sort()
+        a.sort()
 
         def dfs(tmp: list[int], cs: list[int]):
             ans.append(tmp)
-            for i, num in enumerate(cs):
-                if i >= 1 and num == cs[i - 1]:
+            for i, n in enumerate(cs):
+                if i >= 1 and n == cs[i - 1]:
                     continue
-                dfs([*tmp, num], cs[i + 1 :])
+                dfs([*tmp, n], cs[i + 1 :])
 
-        dfs([], nums)
+        dfs([], a)
         return ans
 
 

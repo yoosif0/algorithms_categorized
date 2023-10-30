@@ -20,22 +20,22 @@ import unittest
 
 
 class Solution:
-    def combinationSum2(self, nums: list[int], target: int) -> list[list[int]]:
+    def combinationSum2(self, a: list[int], trg: int) -> list[list[int]]:
         ans = []
-        nums.sort()
+        a.sort()
 
-        def dfs(tmp: list[int], cs: list[int], total: int):
-            if total == target:
+        def dfs(tmp: list[int], cs: list[int], ttl: int):
+            if ttl == trg:
                 ans.append(tmp)
                 return
-            for i, num in enumerate(cs):
-                if i >= 1 and num == cs[i - 1]:
+            for i, n in enumerate(cs):
+                if i >= 1 and n == cs[i - 1]:
                     continue
-                if total + num > target:
+                if ttl + n > trg:
                     break
-                dfs([*tmp, num], cs[i + 1 :], total + num)
+                dfs([*tmp, n], cs[i + 1 :], ttl + n)
 
-        dfs([], nums, 0)
+        dfs([], a, 0)
         return ans
 
 

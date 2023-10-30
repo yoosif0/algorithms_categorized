@@ -7,35 +7,28 @@ https://leetcode.com/problems/generate-parentheses/
                ((())
                ((()))
 #combination
+attaching counter of characters to save time instead of counting characters in each function call
 """
+from collections import Counter
 import unittest
 
 
 class Solution:
     def generateParenthesis(self, n: int) -> list[str]:
-        ans: list[str] = []
+        ans = []
 
-        def dfs(opened: int, closed: int, cur: str):
-            if opened == n and closed == n:
-                ans.append(cur)
-                return
+        def dfs(tmp: str, cnt):
+            if cnt[0] == n and cnt[1] == n:
+                ans.append(tmp)
+            elif cnt[0] == cnt[1]:
+                dfs(tmp + "(", (cnt[0] + 1, cnt[1]))
+            elif cnt[0] == n:
+                dfs(tmp + ")", (cnt[0], cnt[1] + 1))
+            else:
+                dfs(tmp + "(", (cnt[0] + 1, cnt[1]))
+                dfs(tmp + ")", (cnt[0], cnt[1] + 1))
 
-            def open():
-                dfs(opened + 1, closed, cur + "(")
-
-            def close():
-                dfs(opened, closed + 1, cur + ")")
-
-            if opened == closed:
-                open()
-                return
-            if opened == n:
-                close()
-                return
-            open()
-            close()
-
-        dfs(0, 0, "")
+        dfs("", (0, 0))
         return ans
 
 
