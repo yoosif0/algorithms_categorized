@@ -1,5 +1,6 @@
 """
 https://leetcode.com/problems/longest-consecutive-sequence/
+#cur_bst
 [100, 4, 200, 1, 3, 2]
 
 1 2 3 4                 100                 200
@@ -17,16 +18,16 @@ class Solution:
             return 0
         a.sort()
         cur = 1
-        ans = cur
+        bst = cur
         for r in range(1, len(a)):
             if a[r] == a[r - 1] + 1:
                 cur += 1
-                ans = max(cur, ans)
+                bst = max(cur, bst)
             elif a[r] == a[r - 1]:
                 pass
             else:
                 cur = 1
-        return ans
+        return bst
 
 
 class Test(unittest.TestCase):

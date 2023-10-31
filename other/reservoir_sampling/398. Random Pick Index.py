@@ -1,5 +1,6 @@
 """
 https://leetcode.com/problems/random-pick-index
+#group_by_indecis
 """
 from collections import defaultdict
 import random

@@ -1,5 +1,7 @@
 """
 https://leetcode.com/problems/longest-subsequence-with-limited-sum/
+#prefix_sum
+#binary_search
 #sorting_helps
 """
 from itertools import accumulate

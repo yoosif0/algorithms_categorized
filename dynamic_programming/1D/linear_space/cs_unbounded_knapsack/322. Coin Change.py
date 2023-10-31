@@ -16,25 +16,21 @@ n 1
 n 1 n 2 1 3 
 """
 import unittest
-import sys
+
+"""
+0 1 2 3 4 5 6 7 8 9 10 11
+0 
+"""
 
 
 class Solution:
-    def coinChange(self, a: list[int], n: int) -> int:
-        dp = [-1 for _ in range(n + 1)]
+    def coinChange(self, cs: list[int], n: int) -> int:
+        dp = [n + 1 for _ in range(n + 1)]
         dp[0] = 0
-        # remove coins bigger than n
-        a = list(filter(lambda x: x <= n, a))
-        for i in range(1, n + 1):
-            aa = []
-            for j in a:
-                if i - j < 0 or dp[i - j] == -1:
-                    continue
-                aa.append(dp[i - j])
-            if not aa:
-                continue
-            dp[i] = min(aa) + 1
-        return dp[n]
+        for c in cs:
+            for i in range(c, len(dp)):
+                dp[i] = min(dp[i], dp[i - c] + 1)
+        return -1 if dp[n] > n else dp[n]
 
 
 class Test(unittest.TestCase):

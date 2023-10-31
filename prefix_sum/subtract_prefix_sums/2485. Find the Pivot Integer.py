@@ -8,9 +8,9 @@ import unittest
 class Solution:
     def pivotInteger(self, n: int) -> int:
         a = [i for i in range(n + 1)]
-        dp = list(accumulate(a))
-        for i in range(1, len(dp)):
-            if dp[-1] - dp[i] == dp[i - 1]:
+        a = list(accumulate(a))
+        for i in range(1, len(a)):
+            if a[-1] - a[i] == a[i - 1]:
                 return i
         return -1
 

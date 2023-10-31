@@ -22,9 +22,9 @@ import unittest
 
 class Solution:
     def pivotIndex(self, a: list[int]) -> int:
-        dp = list(accumulate(a, initial=0))
-        for i in range(1, len(dp)):
-            if dp[-1] - dp[i] == dp[i - 1]:
+        a = list(accumulate(a, initial=0))
+        for i in range(1, len(a)):
+            if a[-1] - a[i] == a[i - 1]:
                 return i - 1
         return -1
 

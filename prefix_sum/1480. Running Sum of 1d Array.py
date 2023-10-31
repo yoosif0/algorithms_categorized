@@ -1,14 +1,13 @@
 """
 https://leetcode.com/problems/running-sum-of-1d-array/
 """
+from itertools import accumulate
 import unittest
 
 
 class Solution:
     def runningSum(self, a: list[int]) -> list[int]:
-        for i in range(1, len(a)):
-            a[i] += a[i - 1]
-        return a
+        return list(accumulate(a))
 
 
 class Test(unittest.TestCase):

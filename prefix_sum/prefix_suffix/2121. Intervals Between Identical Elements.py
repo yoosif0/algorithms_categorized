@@ -3,6 +3,7 @@ https://leetcode.com/problems/intervals-between-identical-elements/
 #store_index
 #store_all_indecis
 #prefix_suffix
+#group_by_indecis
 
             6 7 8 910111213
 3,1,2,1,1,3,1,3,3,2,2,1
@@ -15,19 +16,17 @@ https://leetcode.com/problems/intervals-between-identical-elements/
 [1,4,  8,            14,      25]
 [0,3,4*2+3=11, 6*3+11=29, 11*4+29=73]
 
-
 """
 
+from collections import defaultdict
 import unittest
 
 
 class Solution:
     def getDistances(self, a: list[int]) -> list[int]:
         # hashmap for each value and its indecis
-        m = {}
+        m = defaultdict(list)
         for i in range(len(a)):
-            if a[i] not in m:
-                m[a[i]] = []
             m[a[i]].append(i)
         for k, ia in m.items():
             # distances on the left side

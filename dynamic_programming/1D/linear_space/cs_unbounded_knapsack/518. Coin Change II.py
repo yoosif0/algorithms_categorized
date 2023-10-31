@@ -15,14 +15,12 @@ import unittest
 
 
 class Solution:
-    def change(self, n: int, a: list[int]) -> int:
+    def change(self, n: int, cs: list[int]) -> int:
         dp = [0 for _ in range(n + 1)]
         dp[0] = 1
-        # remove coins bigger than n
-        a = list(filter(lambda x: x <= n, a))
-        for j in a:
-            for i in range(j, len(dp)):
-                dp[i] += dp[i - j]
+        for c in cs:
+            for i in range(c, len(dp)):
+                dp[i] += dp[i - c]
         return dp[n]
 
 
