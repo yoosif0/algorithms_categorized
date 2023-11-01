@@ -1,7 +1,6 @@
 """
 https://leetcode.com/problems/unique-paths/
-#combination
-#count_combination
+#count_combinations
 """
 import unittest
 

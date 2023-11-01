@@ -7,8 +7,7 @@ https://leetcode.com/problems/unique-paths-ii/
 
 10
 11
-#combination
-#count_combination
+#count_combinations
 """
 import unittest
 

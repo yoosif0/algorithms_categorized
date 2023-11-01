@@ -5,8 +5,7 @@ The dfs function does 2 things.
 1. It mark cells as visited so that the for loop does not assume a cell
 with 1 a new island althoug it belongs to a previously visited island.
 2. Whenever a cell in an island is not in grid1, we mark it as so
-#combination
-#count_combination
+#count_combinations
 """
 import unittest
 

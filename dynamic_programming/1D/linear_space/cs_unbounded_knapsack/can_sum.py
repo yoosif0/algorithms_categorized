@@ -1,20 +1,43 @@
 """
 https://www.youtube.com/watch?v=oBt53YbR9Kk at 3:52:42
-0 1 2 3 4 5 6 7 8
-t 
+#decision
+2 5
+0 1 2 3 4 5 6 7
+    t   t t t t
 """
+import functools
 import unittest
 
 
 class Solution:
+    # def canSum(self, t: int, cs: list[int]) -> bool:
+    #     dp = [False for _ in range(t + 1)]
+    #     cs = list(filter(lambda x: x <= t, cs))
+    #     for c in cs:
+    #         dp[c] = True
+    #         for i in range(c + 1, len(dp)):
+    #             if dp[i - c]:
+    #                 dp[i] = True
+    #     return dp[-1]
+
     def canSum(self, t: int, cs: list[int]) -> bool:
-        dp = [False for _ in range(t + 1)]
-        dp[0] = True
-        for c in cs:
-            for i in range(len(dp)):
-                if dp[i] and i + c < len(dp):
-                    dp[i + c] = True
-        return dp[-1]
+        found = False
+
+        @functools.cache
+        def rcrs(t: int):
+            nonlocal found
+            nonlocal cs
+            for c in cs:
+                if c > t:
+                    continue
+                suf = t - c
+                if suf == 0:
+                    found = True
+                    return
+                rcrs(suf)
+
+        rcrs(t)
+        return found
 
 
 class Test(unittest.TestCase):
