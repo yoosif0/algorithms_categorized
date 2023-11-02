@@ -10,7 +10,7 @@ dp[i] = val + min(i-1, i-2)
 
 
 #optimization
-#prev_cur
+#pre_cur
 """
 
 
@@ -19,10 +19,10 @@ import unittest
 
 class Solution:
     def minCostClimbingStairs(self, a: list[int]) -> int:
-        prev, cur = 0, 0
+        pre, cur = 0, 0
         for i in range(len(a)):
-            prev, cur = cur, min(cur, prev) + a[i]
-        return min(cur, prev)
+            pre, cur = cur, min(cur, pre) + a[i]
+        return min(cur, pre)
 
 
 class Test(unittest.TestCase):

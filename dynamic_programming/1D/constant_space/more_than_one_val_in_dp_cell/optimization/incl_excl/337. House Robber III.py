@@ -28,9 +28,9 @@ def dfs(x: Optional[TreeNode]):
         return [0, 0]
     right = dfs(x.right)
     left = dfs(x.left)
-    incl = x.val + left[1] + right[1]
-    excl = max(left[0], left[1]) + max(right[0], right[1])
-    return [incl, excl]
+    inc = x.val + left[1] + right[1]
+    exc = max(left[0], left[1]) + max(right[0], right[1])
+    return [inc, exc]
 
 
 class Solution:

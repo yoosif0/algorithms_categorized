@@ -17,10 +17,10 @@ import unittest
 
 
 def rob1(a: list[int]) -> int:
-    incl, excl = 0, 0
+    inc, exc = 0, 0
     for _, num in enumerate(a):
-        incl, excl = num + excl, max(incl, excl)
-    return max(excl, incl)
+        inc, exc = num + exc, max(inc, exc)
+    return max(exc, inc)
 
 
 class Solution:

@@ -9,7 +9,7 @@ https://leetcode.com/problems/climbing-stairs/
 1 1 1 1
 
 #count_combinations
-#prev_cur
+#pre_cur
 #optimal_substructure
 #overlapping_subproblems
 #recursion

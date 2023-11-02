@@ -1,5 +1,6 @@
 """
 https://leetcode.com/problems/minimum-size-subarray-sum/
+#find_min_w_len
 
 [2,3,1,2,4,3]
 Window 2
@@ -21,17 +22,17 @@ import sys
 
 class Solution:
     def minSubArrayLen(self, target: int, a: list[int]):
-        ans = sys.maxsize
+        bst = sys.maxsize
         l = 0
         w = 0
         for r in range(len(a)):
             w += a[r]
             while w >= target:
-                ans = min(r - l + 1, ans)
+                bst = min(r - l + 1, bst)
                 # try to shift l to the right as much as possible
                 w -= a[l]
                 l += 1
-        return 0 if ans == sys.maxsize else ans
+        return 0 if bst == sys.maxsize else bst
 
 
 class Test(unittest.TestCase):

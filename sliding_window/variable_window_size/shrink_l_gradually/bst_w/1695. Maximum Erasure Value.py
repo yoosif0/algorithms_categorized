@@ -4,30 +4,24 @@ https://leetcode.com/problems/maximum-erasure-value/description/
 """
 
 import unittest
-import dataclasses
-
-
-@dataclasses.dataclass
-class WindowState:
-    total: int
-    nums: set[int]
 
 
 class Solution:
     def maximumUniqueSubarray(self, a: list[int]) -> int:
-        ans = 0
-        w = WindowState(0, set())
+        bst = 0
+        w_s = set()
+        w_v = 0
         l = 0
         for r in range(len(a)):
-            while a[r] in w.nums:
+            while a[r] in w_s:
                 # shift l to the right of the problematic num
-                w.total -= a[l]
-                w.nums.remove(a[l])
+                w_v -= a[l]
+                w_s.remove(a[l])
                 l += 1
-            w.total += a[r]
-            w.nums.add(a[r])
-            ans = max(w.total, ans)
-        return ans
+            w_v += a[r]
+            w_s.add(a[r])
+            bst = max(w_v, bst)
+        return bst
 
 
 class Test(unittest.TestCase):

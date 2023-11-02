@@ -16,10 +16,10 @@ import unittest
 
 class Solution:
     def rob(self, a: list[int]) -> int:
-        incl, excl = 0, 0
+        inc, exc = 0, 0
         for i in range(len(a)):
-            incl, excl = a[i] + excl, max(incl, excl)
-        return max(excl, incl)
+            inc, exc = a[i] + exc, max(inc, exc)
+        return max(exc, inc)
 
 
 class Test(unittest.TestCase):

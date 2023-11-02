@@ -8,18 +8,14 @@ import unittest
 
 class Solution:
     def partitionString(self, s: str) -> int:
-        w = {s[0]}
-        ans = 1
-        r = 0
-        while True:
-            r += 1
-            if r == len(s):
-                break
+        w = set()
+        cnt = 1
+        for r in range(len(s)):
             if s[r] in w:
                 w.clear()
-                ans += 1
+                cnt += 1
             w.add(s[r])
-        return ans
+        return cnt
 
 
 class Test(unittest.TestCase):

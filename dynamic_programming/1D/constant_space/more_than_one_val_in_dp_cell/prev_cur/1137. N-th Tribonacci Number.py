@@ -1,6 +1,6 @@
 """
 https://leetcode.com/problems/fibonacci-number/
-#prev_cur
+#pre_cur
 """
 
 import unittest
@@ -12,9 +12,9 @@ class Solution:
             return 0
         if n == 1:
             return 1
-        vprev, prev, cur = 0, 1, 1
+        vpre, pre, cur = 0, 1, 1
         for _ in range(3, n + 1):
-            vprev, prev, cur = prev, cur, vprev + prev + cur
+            vpre, pre, cur = pre, cur, vpre + pre + cur
         return cur
 
 

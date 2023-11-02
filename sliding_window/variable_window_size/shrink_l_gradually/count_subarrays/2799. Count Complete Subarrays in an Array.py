@@ -19,11 +19,11 @@ import unittest
 
 class Solution:
     def countCompleteSubarrays(self, a: list[int]) -> int:
-        complete_set = set({})
-        for num in a:
-            complete_set.add(num)
-        required_len = len(complete_set)
-        ans = 0
+        s = set({})
+        for n in a:
+            s.add(n)
+        k = len(s)
+        cnt = 0
         w = {}
         l = 0
         r = 0
@@ -31,10 +31,9 @@ class Solution:
         while True:
             if r == len(a):
                 break
-            num = a[r]
-            w[num] = w.get(num, 0) + 1
-            if len(w) == required_len:
-                ans = len(a) - r
+            w[a[r]] = w.get(a[r], 0) + 1
+            if len(w) == k:
+                cnt += len(a) - r
                 break
             else:
                 r += 1
@@ -43,19 +42,17 @@ class Solution:
         while True:
             if l > r or l == len(a):
                 break
-            num = a[l]
-            if w[num] >= 2:
-                w[num] -= 1
+            if w[a[l]] >= 2:
+                w[a[l]] -= 1
                 l += 1
-                ans += len(a) - r
+                cnt += len(a) - r
             else:
                 # extend r
                 r += 1
                 if r == len(a):
                     break
-                num = a[r]
-                w[num] = w.get(num, 0) + 1
-        return ans
+                w[a[r]] = w.get(a[r], 0) + 1
+        return cnt
 
 
 class Test(unittest.TestCase):

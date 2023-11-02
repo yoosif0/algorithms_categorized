@@ -1,6 +1,6 @@
 """
 https://leetcode.com/problems/fibonacci-number/
-#prev_cur
+#pre_cur
 """
 
 import unittest
@@ -10,9 +10,9 @@ class Solution:
     def fib(self, n: int) -> int:
         if n == 0:
             return 0
-        prev, cur = 0, 1
+        pre, cur = 0, 1
         for _ in range(2, n + 1):
-            prev, cur = cur, prev + cur
+            pre, cur = cur, pre + cur
         return cur
 
 
