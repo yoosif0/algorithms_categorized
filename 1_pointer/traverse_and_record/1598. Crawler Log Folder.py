@@ -7,15 +7,15 @@ import unittest
 
 class Solution:
     def minOperations(self, a: list[str]) -> int:
-        ans = 0
+        cnt = 0
         for ch in a:
             if ch == "../":
-                ans = ans - 1 if ans > 0 else ans
+                cnt = cnt - 1 if cnt > 0 else cnt
             elif ch == "./":
                 pass
             else:
-                ans += 1
-        return ans
+                cnt += 1
+        return cnt
 
 
 class Test(unittest.TestCase):

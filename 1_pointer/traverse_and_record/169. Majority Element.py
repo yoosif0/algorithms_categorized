@@ -8,12 +8,14 @@ import unittest
 class Solution:
     def majorityElement(self, a: list[int]) -> list[int]:
         m = {}
-        ans = (None, 0)
+        ans_el = None
+        ans_cnt = 0
         for i in a:
             m[i] = m.get(i, 0) + 1
-            if m[i] > ans[1]:
-                ans = (i, m[i])
-        return ans[0]
+            if m[i] > ans_cnt:
+                ans_el = i
+                ans_cnt = m[i]
+        return ans_el
 
 
 class Test(unittest.TestCase):

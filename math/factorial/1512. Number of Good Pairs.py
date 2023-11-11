@@ -9,12 +9,11 @@ import unittest
 class Solution:
     def numIdenticalPairs(self, a: list[int]) -> int:
         ans = 0
-        freq = {}
-        for num in a:
-            freq[num] = freq.get(num, 0) + 1
-        for num in freq:
-            n = freq[num]
-            ans += n * (n - 1) // 2
+        m = {}
+        for i in a:
+            m[i] = m.get(i, 0) + 1
+        for i in m:
+            ans += m[i] * (m[i] - 1) // 2
         return ans
 
 

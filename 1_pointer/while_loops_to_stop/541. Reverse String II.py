@@ -6,15 +6,16 @@ import unittest
 
 class Solution:
     def reverseStr(self, s: str, k: int) -> str:
-        fl = True
         ans = []
-        a = []
-        for i in range(len(s)):
-            a.append(s[i])
-            if len(a) == k or i == len(s) - 1:
-                ans.append("".join(a[::-1] if fl else a))
-                fl = not fl
-                a = []
+        i = 0
+        while True:
+            if i >= len(s):
+                break
+            ans.append(s[i : i + k][::-1])
+            if i + k >= len(s):
+                break
+            ans.append(s[i + k : i + 2 * k])
+            i += 2 * k
         return "".join(ans)
 
 

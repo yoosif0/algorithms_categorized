@@ -2,19 +2,14 @@
 https://leetcode.com/problems/majority-element-ii
 """
 
+from collections import Counter
 import unittest
 
 
 class Solution:
     def majorityElement(self, a: list[int]) -> list[int]:
-        threshold = len(a) / 3
-        counter = {}
-        ans = set()
-        for num in a:
-            counter[num] = counter.get(num, 0) + 1
-            if counter[num] > threshold:
-                ans.add(num)
-        return list(ans)
+        m = Counter(a)
+        return list(filter(lambda x: m[x] > len(a) / 3, m))
 
 
 class Test(unittest.TestCase):

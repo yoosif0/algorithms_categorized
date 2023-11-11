@@ -8,17 +8,17 @@ import unittest
 
 class Solution:
     def winnerOfGame(self, s: str) -> bool:
-        a_count = 0
-        b_count = 0
+        a_cnt = 0
+        b_cnt = 0
         all_a = "AAA"
         all_b = "BBB"
         for i in range(len(s) - 2):
-            window = s[i : i + 3]
-            if window == all_a:
-                a_count += 1
-            elif window == all_b:
-                b_count += 1
-        return a_count > b_count
+            w = s[i : i + 3]
+            if w == all_a:
+                a_cnt += 1
+            elif w == all_b:
+                b_cnt += 1
+        return a_cnt > b_cnt
 
 
 class Test(unittest.TestCase):

@@ -8,18 +8,18 @@ import unittest
 class Solution:
     def longestPalindrome(self, s):
         # l of best palindrome and it's length
-        ans_l = 0
-        ans_len = 1
+        l = 0
+        w_len = 1
 
         def update(r, steps_back):
-            nonlocal ans_l
-            nonlocal ans_len
-            l = r - ans_len - steps_back
-            if l < 0:
+            nonlocal l
+            nonlocal w_len
+            l2 = r - w_len - steps_back
+            if l2 < 0:
                 return False
-            sub = s[l : r + 1]
+            sub = s[l2 : r + 1]
             if sub == sub[::-1]:
-                ans_l, ans_len = l, ans_len + steps_back + 1
+                l, w_len = l2, w_len + steps_back + 1
                 return True
 
         for r in range(1, len(s)):
@@ -28,7 +28,7 @@ class Solution:
                 continue
             # check 0 steps before (expand r only)
             update(r, 0)
-        return s[ans_l : ans_l + ans_len]
+        return s[l : l + w_len]
 
 
 class Test(unittest.TestCase):
