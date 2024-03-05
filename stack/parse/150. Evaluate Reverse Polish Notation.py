@@ -1,34 +1,32 @@
 """
 https://leetcode.com/problems/evaluate-reverse-polish-notation/
+The popping instance is when we have an operation
 """
 import unittest
 
-operations_set = set({"+", "-", "*", "/"})
+ops = set({"+", "-", "*", "/"})
 
 
-def str_to_op(num1: int, num2: int, op: str):
+def arith(op: str, n2: int, n1: int):
     if op == "+":
-        return num1 + num2
+        return n1 + n2
     if op == "-":
-        return num1 - num2
+        return n1 - n2
     if op == "*":
-        return num1 * num2
+        return n1 * n2
     else:
-        return int(num1 / num2)
+        return int(n1 / n2)
 
 
 class Solution:
     def evalRPN(self, a: list[str]) -> int:
         st = []
         for ch in a:
-            if ch not in operations_set:
-                st.append(int(ch))
-            else:
-                ppd = int(st.pop())
-                ppd2 = int(st.pop())
-                result = str_to_op(ppd2, ppd, ch)
-                st.append(result)
-        return st[-1]
+            st.append(ch)
+            if ch in ops:
+                ans = arith(st.pop(), int(st.pop()), int(st.pop()))
+                st.append(ans)
+        return int(st[-1])
 
 
 class Test(unittest.TestCase):

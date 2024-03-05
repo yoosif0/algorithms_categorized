@@ -8,9 +8,9 @@ import unittest
 class Solution:
     def containsDuplicate(self, a: list[int]) -> bool:
         m = {}
-        for k in a:
-            m[k] = m.get(k, 0) + 1
-            if m[k] > 1:
+        for i in a:
+            m[i] = m.get(i, 0) + 1
+            if m[i] > 1:
                 return True
         return False
 
