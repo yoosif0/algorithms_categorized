@@ -13,11 +13,11 @@ import unittest
 class Solution:
     def topKFrequent(self, a: list[int], k: int) -> list[int]:
         # num counter
-        m = collections.Counter(a)
+        cnt = collections.Counter(a)
         # buckets
         bs = [[] for _ in range(len(a) + 1)]
-        for num in m:
-            bs[m[num]].append(num)
+        for num in cnt:
+            bs[cnt[num]].append(num)
         ans = []
         for i in range(len(bs) - 1, -1, -1):
             for j in bs[i]:

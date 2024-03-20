@@ -1,12 +1,10 @@
 """
 https://leetcode.com/problems/squares-of-a-sorted-array/
-
-The idea here is that the 2 extremes of left and right have the highest absolute numbers. This means
-we don't need to fully sort. We can have 2 pointers and compare whichever is higher, add the result to the
-end of the result array
-
 #math
-the math concept here is that this acts as if you have 2 sorted arrays since square of a negative value with high magnitue at the beginning is a high value
+
+like "simplest" 
+
+The trick here is that this looks like a parabola with a valley. The max value is in one of both ends of array.
 """
 
 import unittest
@@ -17,13 +15,14 @@ class Solution:
     def sortedSquares(self, a: list[int]) -> list[int]:
         l = 0
         r = len(a) - 1
+        a = [n**2 for n in a]
         ans = [None for _ in range(len(a))]
         for i in range(len(ans) - 1, -1, -1):
-            if abs(a[r]) > abs(a[l]):
-                ans[i] = pow(a[r], 2)
+            if a[r] > a[l]:
+                ans[i] = a[r]
                 r -= 1
             else:
-                ans[i] = pow(a[l], 2)
+                ans[i] = a[l]
                 l += 1
         return ans
 

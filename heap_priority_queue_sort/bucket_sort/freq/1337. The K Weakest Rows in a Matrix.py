@@ -3,6 +3,8 @@ https://leetcode.com/problems/the-k-weakest-rows-in-a-matrix
 #matrix
 """
 
+import collections
+import itertools
 import unittest
 
 
@@ -10,15 +12,11 @@ class Solution:
     def kWeakestRows(self, grid: list[list[int]], k: int) -> list[int]:
         m = len(grid)
         n = len(grid[0])
-        # buckets
+        # buckets: key is the frequency from 0 to n
         bs = [[] for _ in range(n + 1)]
         for i in range(m):
             bs[sum(grid[i])].append(i)
-        ans = []
-        for bc in bs:
-            for i in bc:
-                ans.append(i)
-        return ans[:k]
+        return list(itertools.chain.from_iterable(bs))[:k]
 
 
 class Test(unittest.TestCase):

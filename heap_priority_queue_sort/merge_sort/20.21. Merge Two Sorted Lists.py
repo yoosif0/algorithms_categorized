@@ -2,9 +2,10 @@
 https://leetcode.com/problems/merge-two-sorted-lists/
 #dummy
 """
+
 from typing import Optional
 import unittest
-from algoutils.list_node import ListNode
+from algoutils.list_node import ListNode, ll
 
 """
 
@@ -38,20 +39,11 @@ class Solution:
 class Test(unittest.TestCase):
     def test(self):
         t = Solution()
-        tree = ListNode(
-            1,
-            ListNode(
-                2,
-                ListNode(4),
-            ),
+        self.assertEqual(
+            t.mergeTwoLists(ll([1, 2, 4]), ll([1, 3, 4])).arr(), [1, 1, 2, 3, 4, 4]
         )
-        tree2 = ListNode(
-            1,
-            ListNode(3, ListNode(4)),
-        )
-        print(t.mergeTwoLists(tree, tree2))
-        print(t.mergeTwoLists(None, ListNode(0)))
-        print(t.mergeTwoLists(ListNode(2), ListNode(1)))
+        self.assertEqual(t.mergeTwoLists(ll([]), ll([0])).arr(), [0])
+        self.assertEqual(t.mergeTwoLists(ll([2]), ll([1])).arr(), [1, 2])
 
 
 if __name__ == "__main__":

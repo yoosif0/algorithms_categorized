@@ -1,10 +1,12 @@
 """
 https://leetcode.com/problems/merge-sorted-array
 
-1 2 2 3 6 6   2 5 6 swap and keep r as it is
-  i i       j
+This is like "simplest_merge_sort.py" but here you need to do it in place.
 
+We fill "ans" from right to left because the empty space we have is on the right of one of the arrays
 
+1 2 2 3 6 6          2 5 6
+  i,m             n     
 """
 
 import unittest
@@ -25,7 +27,6 @@ class Solution:
                 n -= 1
         return a
 
-
 class Test(unittest.TestCase):
     def test(self):
         t = Solution()
@@ -42,8 +43,6 @@ class Test(unittest.TestCase):
             t.merge([4, 0, 0, 0, 0, 0], 1, [1, 2, 3, 5, 6], 5), [1, 2, 3, 4, 5, 6]
         )
 
-
-""
 
 if __name__ == "__main__":
     unittest.main()

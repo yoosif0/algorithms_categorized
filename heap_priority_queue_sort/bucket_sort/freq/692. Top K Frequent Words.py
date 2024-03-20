@@ -11,17 +11,16 @@ import unittest
 class Solution:
     def topKFrequent(self, a: list[str], k: int) -> list[str]:
         # word counter
-        m = collections.Counter(a)
+        cnt = collections.Counter(a)
         # buckets for frequences. each bucket hold words with certain freq
         bs = [[] for _ in range(len(a))]
-        for word in m:
-            bs[m[word] - 1].append(word)
+        for x in cnt:
+            bs[cnt[x] - 1].append(x)
         ans = []
         for i in range(len(bs) - 1, -1, -1):
             # sorting bucket since they need to be in lexicographic order
             bs[i].sort()
-            for word in bs[i]:
-                ans.append(word)
+            ans.extend(bs[i])
         return ans[:k]
 
 
