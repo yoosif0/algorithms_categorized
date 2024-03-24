@@ -1,1 +1,1 @@
-Finding the largest or smallest k numbers doesn't need sort O(nlogn) and can be performed using heap with O(n) time
+In a heap the smallest element is always the first in the array. You can have max heap negating the numbers

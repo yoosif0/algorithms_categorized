@@ -15,23 +15,14 @@ class Solution:
         if head is None:
             return ListNode(insertVal)
         # insert when the val is between a and b
-        # if val is less than min or more than max, then insert after max.
+        # if val is less than min or more than max, then insert after max (when b is less than a).
         a = head
         b = head.next
-        maxi = head
-        while True:
-            if a.val <= insertVal and b.val >= insertVal:
-                a.next = ListNode(insertVal, b)
-                break
-            # if we reached the end, this means that insertVal is either more than max or less than min,
-            # then we should just insert the val after maxi
-            elif b is head:
-                maxi.next = ListNode(insertVal, maxi.next)
-                break
-            else:
-                if b.val > maxi.val:
-                    maxi = b
-                a, b = a.next, b.next
+        while not (a.val <= insertVal and b.val >= insertVal) and not (
+            a.val > b.val and (insertVal >= a.val or insertVal <= b.val)
+        ):
+            a, b = b, b.next
+        a.next = ListNode(insertVal, b)
         return head
 
 

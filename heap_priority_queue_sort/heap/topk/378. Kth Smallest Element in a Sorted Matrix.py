@@ -12,15 +12,11 @@ class Solution:
     def kthSmallest(self, grid: list[list[int]], k: int) -> int:
         m = len(grid)
         n = len(grid[0])
-        h = []
-        for i in range(m):
-            for j in range(n):
-                if len(h) < k:
-                    h.append(-grid[i][j])
-                    if len(h) == k:
-                        heapq.heapify(h)
-                else:
-                    heapq.heappushpop(h, -grid[i][j])
+        a = [-grid[i][j] for i in range(m) for j in range(n)]
+        h = a[:k]
+        heapq.heapify(h)
+        for i in range(k, len(a)):
+            heapq.heappushpop(h, a[i])
         return -h[0]
 
 
