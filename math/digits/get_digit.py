@@ -13,6 +13,9 @@ class Test(unittest.TestCase):
     def test(self):
         self.assertEqual(digit(13, 2), 1)
         self.assertEqual(digit(213, 2), 1)
+        self.assertEqual(digit(213, 1), 3)
+        self.assertEqual(digit(213, 3), 2)
+        self.assertEqual(digit(213, 4), 0)
 
 
 if __name__ == "__main__":
