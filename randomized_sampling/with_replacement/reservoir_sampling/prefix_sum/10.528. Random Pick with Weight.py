@@ -17,8 +17,8 @@ class Solution:
         self.pre = pre
 
     def pickIndex(self) -> int:
-        rnd = random.randint(1, self.pre[-1])
-        return bisect.bisect_left(self.pre, rnd)
+        x = random.randint(1, self.pre[-1])
+        return bisect.bisect_left(self.pre, x)
 
 
 class Test(unittest.TestCase):

@@ -22,8 +22,8 @@ class Solution:
         self.pre = pre
 
     def pick(self) -> int:
-        rnd = random.randint(0, self.pre[-1])
-        i = bisect.bisect_left(self.pre, rnd)
+        x = random.randint(0, self.pre[-1])
+        i = bisect.bisect_left(self.pre, x)
         k = self.a[i]
         return [
             random.randint(k[0], k[2]),
