@@ -4,6 +4,7 @@ https://leetcode.com/problems/longest-subsequence-with-limited-sum/
 #binary_search
 #sorting_helps
 """
+
 from itertools import accumulate
 import unittest
 import bisect
@@ -12,10 +13,10 @@ import bisect
 class Solution:
     def answerQueries(self, a: list[int], req: list[int]) -> list[int]:
         a.sort()
-        a = list(accumulate(a))
+        a = list(accumulate(a, initial=0))
         # binary search
         for i in range(len(req)):
-            req[i] = bisect.bisect_right(a, req[i])
+            req[i] = bisect.bisect_right(a, req[i]) - 1
         return req
 
 
