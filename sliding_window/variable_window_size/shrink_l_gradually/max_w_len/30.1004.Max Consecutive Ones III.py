@@ -7,19 +7,18 @@ import unittest
 
 class Solution:
     def longestOnes(self, a: list[int], k: int) -> int:
-        w_l = 0
-        w_k = 0
+        l = 0
+        w = 0
         ans = 0
         for r in range(len(a)):
-            if a[r] == 1:
-                ans = max(r - w_l + 1, ans)
-            elif a[r] == 0 and w_k < k:
-                w_k += 1
-                ans = max(r - w_l + 1, ans)
+            if a[r] == 0:
+                w += 1
+            if w > k:
+                if a[l] == 0:
+                    w -= 1
+                l += 1
             else:
-                while a[w_l] == 1:
-                    w_l += 1
-                w_l += 1
+                ans = max(r - l + 1, ans)
         return ans
 
 

@@ -17,9 +17,9 @@ import unittest
 class Solution:
     def maximumBeauty(self, a: list[int], k: int) -> int:
         a.sort()
-        ans = 1
+        ans = 0
         l = 0
-        for r in range(1, len(a)):
+        for r in range(len(a)):
             if a[r] - a[l] > 2 * k:
                 l += 1
             else:
