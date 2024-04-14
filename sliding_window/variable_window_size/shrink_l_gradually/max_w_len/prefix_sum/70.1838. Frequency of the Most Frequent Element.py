@@ -17,8 +17,8 @@ class Solution:
         w = 0
         for r in range(len(a)):
             w += a[r]
-            worst = (r - l + 1) * a[r]
-            if worst - w > k:
+            worst = (r - l) * a[r]
+            if worst - (w - a[r]) > k:
                 w -= a[l]
                 l += 1
             else:

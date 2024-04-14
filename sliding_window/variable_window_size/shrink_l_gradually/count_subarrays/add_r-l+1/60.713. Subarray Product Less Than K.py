@@ -9,6 +9,7 @@ note we can't solve this problem with sliding window if negative numbers are inc
 2:  w=10 [2], [5,2]
 6:  w=60 [6], [5,2,6], [2,6]
 """
+
 import unittest
 
 
@@ -18,7 +19,6 @@ class Solution:
         w = 1
         cnt = 0
         for r in range(len(a)):
-            # expand from r and then compress from l if needed
             w *= a[r]
             while l <= r and w >= k:
                 w /= a[l]
