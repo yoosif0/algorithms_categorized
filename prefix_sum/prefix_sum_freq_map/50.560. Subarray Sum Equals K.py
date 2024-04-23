@@ -14,8 +14,6 @@ Input: nums = [1,2,8,1,2,0,-5,1], k = 10
 1: save 10; we don't have 0 total++
 """
 
-import collections
-from itertools import accumulate
 import unittest
 
 
@@ -23,14 +21,14 @@ class Solution:
     def subarraySum(self, a: list[int], k: int) -> int:
         m = {0: 1}
         cnt = 0
-        cur = 0
-        for r in range(len(a)):
-            cur += a[r]
-            if cur - k in m:
-                cnt += m[cur - k]
-            if cur not in m:
-                m[cur] = 0
-            m[cur] += 1
+        acc = 0
+        for i in range(len(a)):
+            acc += a[i]
+            if acc - k in m:
+                cnt += m[acc - k]
+            if acc not in m:
+                m[acc] = 0
+            m[acc] += 1
         return cnt
 
 

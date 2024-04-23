@@ -3,19 +3,22 @@ https://leetcode.com/problems/count-number-of-nice-subarrays/
 You can not add "l" because sometimes what's before "l" makes the subarry invalid
 """
 
-import collections
-from itertools import accumulate
 import unittest
 
 
 class Solution:
     def numberOfSubarrays(self, a: list[int], k: int) -> int:
-        a = list(accumulate([0 if n % 2 == 0 else 1 for n in a], initial=0))
-        m = collections.Counter(a)
+        a = [0 if n % 2 == 0 else 1 for n in a]
+        m = {0: 1}
         cnt = 0
+        acc = 0
         for i in range(len(a)):
-            if a[i] >= k:
-                cnt += m[a[i] - k]
+            acc += a[i]
+            if acc - k in m:
+                cnt += m[acc - k]
+            if acc not in m:
+                m[acc] = 0
+            m[acc] += 1
         return cnt
 
 
