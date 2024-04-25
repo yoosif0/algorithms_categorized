@@ -15,7 +15,8 @@ import unittest
 
 
 class Solution:
-    def findMin(self, a: list[int]) -> int:
+    def search(self, a: list[int], t: int) -> int:
+        # find min (pivot point)
         l = 0
         r = len(a) - 1
         while l < r:
@@ -24,14 +25,11 @@ class Solution:
                 l = m + 1
             else:
                 r = m
-        return l
-
-    def search(self, a: list[int], t: int) -> int:
-        i = self.findMin(a)
+        # l is pivot point
         ans = (
-            bisect.bisect_left(a, t, 0, i)
+            bisect.bisect_left(a, t, 0, l)
             if t > a[-1]
-            else bisect.bisect_left(a, t, i, len(a))
+            else bisect.bisect_left(a, t, l, len(a) - 1)
         )
         return ans if ans < len(a) and a[ans] == t else -1
 
