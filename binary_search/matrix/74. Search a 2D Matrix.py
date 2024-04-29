@@ -12,19 +12,19 @@ import unittest
 
 
 class Solution:
-    def searchMatrix(self, grid: list[list[int]], t: int) -> bool:
-        m = len(grid)
-        n = len(grid[0])
+    def searchMatrix(self, g: list[list[int]], t: int) -> bool:
+        m = len(g)
+        n = len(g[0])
         l = 0
         r = m * n
         while l < r:
             md = (r + l) // 2
-            mv = grid[md // n][md % n]
+            mv = g[md // n][md % n]
             if mv < t:
                 l = md + 1
             else:
                 r = md
-        return l < m * n and grid[l // n][l % n] == t
+        return l < m * n and g[l // n][l % n] == t
 
 
 class Test(unittest.TestCase):

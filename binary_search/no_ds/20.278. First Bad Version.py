@@ -8,7 +8,7 @@ import unittest
 bad = None
 
 
-def isBadVersion(n: int):
+def target(n: int):
     return n >= bad
 
 
@@ -18,7 +18,7 @@ class Solution:
         r = n
         while l < r:
             m = (l + r) // 2
-            if not isBadVersion(m):
+            if not target(m):
                 l = m + 1
             else:
                 r = m

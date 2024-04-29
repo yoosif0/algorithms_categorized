@@ -1,7 +1,7 @@
 """
 https://leetcode.com/problems/koko-eating-bananas/
 [3, 6, 7, 11], 8
-l=1, h=biggest_pile
+The trick here is to know that the limits are 1 and max(a) for lo and hi respctively
 m=6; for loop to check how many hours are needed there which is 6
 6<8 so decrease again. try bfs(1,6) which m=3. for loop to find hours>max
 so we need to increase speed. try bfs(3,6). m=4. for loop to get 8 hours = max; return m
