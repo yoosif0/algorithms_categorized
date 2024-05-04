@@ -1,0 +1,1 @@
+No data structure to perform binary search on. There is only min (l) and max (r)

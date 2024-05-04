@@ -3,13 +3,21 @@ https://leetcode.com/problems/binary-search/
 """
 
 import unittest
-import bisect
 
 
 class Solution:
     def search(self, a: list[int], t: int) -> int:
-        i = bisect.bisect_left(a, t)
-        return i if i < len(a) and a[i] == t else -1
+        l = 0
+        r = len(a) - 1
+        while l <= r:
+            m = (l + r) // 2
+            if a[m] < t:
+                l = m + 1
+            elif a[m] > t:
+                r = m - 1
+            else:
+                return m
+        return -1
 
 
 class Test(unittest.TestCase):

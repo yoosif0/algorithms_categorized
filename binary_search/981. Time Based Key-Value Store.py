@@ -9,7 +9,6 @@ https://leetcode.com/problems/time-based-key-value-store
 """
 
 import unittest
-import bisect
 
 
 class TimeMap:
@@ -19,18 +18,24 @@ class TimeMap:
 
     def set(self, k: str, v: str, t: int) -> None:
         if k not in self.t:
-            self.t[k] = []
-            self.v[k] = []
+            self.t[k] = [0]
+            self.v[k] = [""]
         self.t[k].append(t)
         self.v[k].append(v)
 
     def get(self, k: str, t: int) -> str:
         if k not in self.t:
             return ""
-        i = bisect.bisect_right(self.t[k], t) - 1
-        if i < 0:
-            return ""
-        return self.v[k][i]
+        a = self.t[k]
+        l = 0
+        r = len(a) - 1
+        while l < r:
+            m = (l + r + 1) // 2
+            if a[m] > t:
+                r = m - 1
+            else:
+                l = m
+        return self.v[k][r]
 
 
 class Test(unittest.TestCase):
@@ -52,6 +57,12 @@ class Test(unittest.TestCase):
         obj.set("foo", "bar2", 4)
         self.assertEqual(obj.get("foo", 4), "bar2")
         self.assertEqual(obj.get("foo", 5), "bar2")
+
+    def test_2(self):
+        obj = TimeMap()
+        obj.set("love", "high", 10)
+        obj.set("love", "low", 20)
+        self.assertEqual(obj.get("love", 5), "")
 
 
 if __name__ == "__main__":

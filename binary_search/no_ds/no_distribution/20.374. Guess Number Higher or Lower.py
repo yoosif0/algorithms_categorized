@@ -1,6 +1,5 @@
 """
 https://leetcode.com/problems/guess-number-higher-or-lower/
-#bisect_left
 """
 
 import unittest
@@ -22,7 +21,8 @@ class Solution:
         r = n
         while l < r:
             m = (l + r) // 2
-            if guess(m) == 1:
+            feasible = guess(m) != 1
+            if not feasible:
                 l = m + 1
             else:
                 r = m

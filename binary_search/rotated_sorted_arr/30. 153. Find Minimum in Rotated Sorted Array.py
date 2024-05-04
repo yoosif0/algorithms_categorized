@@ -1,8 +1,5 @@
 """
 https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/
-3, 4, 5, 1, 2
-4, 5, 6, 7, 0, 1, 2
-#both_right_left_works
 """
 
 import unittest

@@ -1,5 +1,6 @@
 """
 https://leetcode.com/problems/find-minimum-in-rotated-sorted-array-ii
+#first_occurrence
 """
 
 import unittest
@@ -12,12 +13,12 @@ class Solution:
         while l < r:
             m = (l + r) // 2
             # the line below holds the whole trick that differentiatest this problem from 153. Find Min...
-            if a[m] == a[r]:
-                r -= 1
-            elif a[m] > a[r]:
+            if a[m] > a[r]:
                 l = m + 1
-            else:
+            elif a[m] < a[r]:
                 r = m
+            else:
+                r -= 1
         return a[l]
 
 

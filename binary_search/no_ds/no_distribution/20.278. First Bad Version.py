@@ -1,6 +1,5 @@
 """
 https://leetcode.com/problems/first-bad-version/
-#bisect_left
 """
 
 import unittest
@@ -8,7 +7,7 @@ import unittest
 bad = None
 
 
-def target(n: int):
+def isBadVersion(n: int):
     return n >= bad
 
 
@@ -18,7 +17,8 @@ class Solution:
         r = n
         while l < r:
             m = (l + r) // 2
-            if not target(m):
+            feasible = isBadVersion(m)
+            if not feasible:
                 l = m + 1
             else:
                 r = m

@@ -1,15 +1,24 @@
 """
 https://leetcode.com/problems/search-insert-position/
-both bisect_left and bisect_right works because the arr has distinct values. If not, the question should tell use what to do if the insert value equals one of the values in the array. if we should put the new val to the left, we do bisect left 
+it's flexible because the arr have distinct values
 """
 
-import bisect
 import unittest
 
 
 class Solution:
     def searchInsert(self, a: list[int], t: int) -> int:
-        return bisect.bisect_left(a, t)
+        l = 0
+        r = len(a)
+        while l < r:
+            m = (l + r) // 2
+            if a[m] < t:
+                l = m + 1
+            elif a[m] > t:
+                r = m
+            else:
+                return m
+        return l
 
 
 class Test(unittest.TestCase):
@@ -17,6 +26,8 @@ class Test(unittest.TestCase):
         t = Solution()
         self.assertEqual(t.searchInsert([1, 3, 5, 6], 5), 2)
         self.assertEqual(t.searchInsert([1, 3, 5, 6], 7), 4)
+        self.assertEqual(t.searchInsert([1, 3, 5, 6], 0), 0)
+        self.assertEqual(t.searchInsert([1, 3], 2), 1)
 
 
 if __name__ == "__main__":

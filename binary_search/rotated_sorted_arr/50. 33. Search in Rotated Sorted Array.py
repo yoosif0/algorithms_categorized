@@ -25,13 +25,24 @@ class Solution:
                 l = m + 1
             else:
                 r = m
-        # l is pivot point
-        ans = (
-            bisect.bisect_left(a, t, 0, l)
-            if t > a[-1]
-            else bisect.bisect_left(a, t, l, len(a) - 1)
-        )
-        return ans if ans < len(a) and a[ans] == t else -1
+        pvt = l
+        if t > a[-1]:
+            l = 0
+            r = pvt - 1
+        elif t < a[-1]:
+            l = pvt
+            r = len(a) - 1
+        else:
+            return len(a) - 1
+        while l <= r:
+            m = (l + r) // 2
+            if a[m] < t:
+                l = m + 1
+            elif a[m] > t:
+                r = m - 1
+            else:
+                return m
+        return -1
 
 
 class Test(unittest.TestCase):

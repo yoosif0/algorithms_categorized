@@ -2,13 +2,10 @@
 https://leetcode.com/problems/koko-eating-bananas/
 [3, 6, 7, 11], 8
 The trick here is to know that the limits are 1 and max(a) for lo and hi respctively
-m=6; for loop to check how many hours are needed there which is 6
-6<8 so decrease again. try bfs(1,6) which m=3. for loop to find hours>max
-so we need to increase speed. try bfs(3,6). m=4. for loop to get 8 hours = max; return m
+
 """
 
 import unittest
-import math
 
 
 class Solution:
@@ -17,10 +14,10 @@ class Solution:
         r = max(a)
         while l < r:
             m = (r + l) // 2
-            mv = 0
-            for i in range(len(a)):
-                mv += math.ceil(a[i] / m)
-            if mv > t:
+            # (n - 1) // m + 1 is faster than math.ceil
+            hrs = sum((n - 1) // m + 1 for n in a)
+            feasible = hrs <= t
+            if not feasible:
                 l = m + 1
             else:
                 r = m

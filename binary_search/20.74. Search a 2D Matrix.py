@@ -17,14 +17,16 @@ class Solution:
         n = len(g[0])
         l = 0
         r = m * n
-        while l < r:
-            md = (r + l) // 2
-            mv = g[md // n][md % n]
+        while l <= r:
+            mid = (r + l) // 2
+            mv = g[mid // n][mid % n]
             if mv < t:
-                l = md + 1
+                l = mid + 1
+            elif mv > t:
+                r = mid - 1
             else:
-                r = md
-        return l < m * n and g[l // n][l % n] == t
+                return True
+        return False
 
 
 class Test(unittest.TestCase):
