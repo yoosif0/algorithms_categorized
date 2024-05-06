@@ -16,8 +16,7 @@ class Solution:
             m = (r + l) // 2
             # (n - 1) // m + 1 is faster than math.ceil
             hrs = sum((n - 1) // m + 1 for n in a)
-            feasible = hrs <= t
-            if not feasible:
+            if hrs <= t:
                 l = m + 1
             else:
                 r = m

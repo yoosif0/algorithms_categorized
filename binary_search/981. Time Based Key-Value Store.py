@@ -2,10 +2,6 @@
 https://leetcode.com/problems/time-based-key-value-store
 {"foo": ["bar", "bar2"]}
 {"foo": [1,4]}
-
-#bisect_right
-#bisect_post_process
-#bisect_pre_process
 """
 
 import unittest

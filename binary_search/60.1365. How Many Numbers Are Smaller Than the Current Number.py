@@ -4,7 +4,6 @@ https://leetcode.com/problems/how-many-numbers-are-smaller-than-the-current-numb
 """
 
 import unittest
-import bisect
 
 
 class Solution:

@@ -1,33 +1,39 @@
 """
 https://leetcode.com/problems/random-point-in-non-overlapping-rectangles
 #integer_points : like area but add 1 to each dimention (width and length)
-#prefix_sum : prefix sum makes it easier to create sampling pool
-#bisect_post_process
 """
 
-import bisect
 import random
 import unittest
 
 
 class Solution:
     def __init__(self, a: list[list[int]]):
-        cur = 0
-        pre = [0]
-        for x in a:
-            # like area but add 1 since we want integer points
-            cur += (x[2] - x[0] + 1) * (x[3] - x[1] + 1)
-            pre.append(cur)
+        # weight distribution for each rectanlge (like area but add 1 since outer points are included)
+        acc = 0
+        wps = []
+        for i in range(len(a)):
+            acc += (a[i][2] - a[i][0] + 1) * (a[i][3] - a[i][1] + 1)
+            wps.append(acc)
         self.a = a
-        self.pre = pre
+        self.wps = wps
 
     def pick(self) -> int:
-        rnd = random.uniform(0, self.pre[-1])
-        i = bisect.bisect_left(self.pre, rnd) - 1
-        k = self.a[i]
+        t = random.uniform(0, self.wps[-1])
+        # find index of first item greater than t
+        l = 0
+        r = len(self.wps) - 1
+        while l < r:
+            m = (l + r) // 2
+            if self.wps[m] < t:
+                l = m + 1
+            else:
+                r = m
+        rect = self.a[l]
+        # now pick a random point in the picked rectangle
         return [
-            random.randint(k[0], k[2]),
-            random.randint(k[1], k[3]),
+            random.randint(rect[0], rect[2]),
+            random.randint(rect[1], rect[3]),
         ]
 
 
@@ -35,7 +41,7 @@ class Test(unittest.TestCase):
     def test(self):
         t = Solution(
             [
-                [53487036, -14015982, 53487038, -14015981],
+                [10, 9, 11, 12],
                 [0, 0, 2, 1],
                 [-2, -2, 1, 1],
                 [2, 2, 6, 5],

@@ -17,8 +17,7 @@ class Solution:
         r = n
         while l < r:
             m = (l + r) // 2
-            feasible = isBadVersion(m)
-            if not feasible:
+            if not isBadVersion(m):
                 l = m + 1
             else:
                 r = m

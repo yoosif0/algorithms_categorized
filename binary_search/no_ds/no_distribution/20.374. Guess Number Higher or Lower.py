@@ -8,25 +8,27 @@ picked = None
 
 
 def guess(n: int):
-    if n == picked:
-        return 0
     if n < picked:
         return 1
-    return -1
+    elif n > picked:
+        return -1
+    else:
+        return 0
 
 
 class Solution:
     def guessNumber(self, n: int) -> int:
         l = 1
         r = n
-        while l < r:
+        while l <= r:
             m = (l + r) // 2
-            feasible = guess(m) != 1
-            if not feasible:
+            ans = guess(m)
+            if ans == 1:
                 l = m + 1
+            elif ans == -1:
+                r = m - 1
             else:
-                r = m
-        return l
+                return m
 
 
 class Test(unittest.TestCase):

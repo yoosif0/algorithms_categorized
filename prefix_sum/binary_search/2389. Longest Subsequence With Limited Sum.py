@@ -7,7 +7,6 @@ https://leetcode.com/problems/longest-subsequence-with-limited-sum/
 
 from itertools import accumulate
 import unittest
-import bisect
 
 
 class Solution:
@@ -16,8 +15,25 @@ class Solution:
         a = list(accumulate(a, initial=0))
         # binary search
         for i in range(len(req)):
-            req[i] = bisect.bisect_right(a, req[i]) - 1
+            t = req[i]
+            l = 0
+            r = len(a) - 1
+            while l < r:
+                m = (l + r + 1) // 2
+                if a[m] > t:
+                    r = m - 1
+                elif a[m] < t:
+                    l = m
+                else:
+                    l = m
+                    break
+            req[i] = l
         return req
+
+
+"""
+0 1 3 7 12
+"""
 
 
 class Test(unittest.TestCase):

@@ -1,6 +1,5 @@
 """
 https://leetcode.com/problems/find-smallest-letter-greater-than-target
-bisect_right because we're looking for something strictly greater than target.It means that equal vals are with smaller vals on left. Greater vals are on right
 """
 
 import unittest

@@ -1,10 +1,7 @@
 """
 https://leetcode.com/problems/random-pick-with-weight/
-#bisect_post_process
-6,2,10,1,3,2,3
 """
 
-import bisect
 from itertools import accumulate
 import random
 import unittest
@@ -12,12 +9,29 @@ import unittest
 
 class Solution:
     def __init__(self, a: list[list[int]]):
-        pre = list(accumulate(a, initial=0))
-        self.pre = pre
+        pre = list(accumulate(a))
+        self.wps = pre
 
     def pickIndex(self) -> int:
-        rnd = random.uniform(0, self.pre[-1])
-        return bisect.bisect_left(self.pre, rnd) - 1
+        t = random.uniform(0, self.wps[-1])
+        # find index of first item greater than t
+        l = 0
+        r = len(self.wps) - 1
+        while l < r:
+            m = (l + r) // 2
+            if self.wps[m] < t:
+                l = m + 1
+            else:
+                r = m
+        return l
+
+
+"""
+112 437 5
+112 549 554
+
+t = 200.23
+"""
 
 
 class Test(unittest.TestCase):
