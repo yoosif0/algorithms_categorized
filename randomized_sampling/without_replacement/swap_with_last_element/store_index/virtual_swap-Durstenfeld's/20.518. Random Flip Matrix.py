@@ -1,6 +1,6 @@
 """
 https://leetcode.com/problems/random-flip-matrix
-#grid
+#matrix
 """
 
 import random
