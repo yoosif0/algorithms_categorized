@@ -9,8 +9,7 @@ import unittest
 class Solution:
     def smallerNumbersThanCurrent(self, a: list[int]) -> list[int]:
         # make a sorted copy of a
-        ac = a.copy()
-        ac.sort()
+        ac = sorted(a)
         for i in range(len(a)):
             l = 0
             r = len(ac) - 1
