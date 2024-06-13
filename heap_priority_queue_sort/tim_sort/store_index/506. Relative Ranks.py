@@ -1,5 +1,6 @@
 """
 https://leetcode.com/problems/relative-ranks/
+#store_index_before_sorting
 """
 
 import unittest
@@ -8,8 +9,7 @@ import unittest
 class Solution:
     def findRelativeRanks(self, a: list[int]) -> list[str]:
         m = {}
-        ac = a.copy()
-        ac.sort(reverse=True)
+        ac = sorted(a, reverse=True)
         for i in range(len(ac)):
             m[ac[i]] = i
         aa = ["Gold Medal", "Silver Medal", "Bronze Medal"]

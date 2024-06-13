@@ -12,11 +12,11 @@ class Solution:
         l = 0
         r = len(a) - 1
         while l < r:
-            m = (l + r) // 2
-            if a[m] <= t:
-                l = m + 1
+            mid = (l + r) // 2
+            if a[mid] <= t:
+                l = mid + 1
             else:
-                r = m
+                r = mid
         return a[l]
 
 

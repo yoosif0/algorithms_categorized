@@ -12,20 +12,20 @@ class Solution:
         l = 0
         r = len(a) - 1
         while l < r:
-            m = (l + r) // 2
-            if a[m] < x:
-                l = m + 1
+            mid = (l + r) // 2
+            if a[mid] < x:
+                l = mid + 1
             else:
-                r = m
+                r = mid
         first = l
         l = first
         r = len(a) - 1
         while l < r:
-            m = (l + r + 1) // 2
-            if a[m] > x:
-                r = m - 1
+            mid = (l + r + 1) // 2
+            if a[mid] > x:
+                r = mid - 1
             else:
-                l = m
+                l = mid
         last = r
         return [first, last] if a[first] == x else [-1, -1]
 
