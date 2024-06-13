@@ -1,11 +1,12 @@
 """
+@nested-tags:binary_search/no_arr/consumption,binary_search/remove_from_r
 https://leetcode.com/problems/maximum-candies-allocated-to-k-children
 [5,8,6,7,6,7,20] 30
 59 / 30
 5 5 5 5 5 5 5 5 5 5 5 5
 
-mid = (left + right) / 2 and l=m+1 to find first element valid
-mid = (left + right + 1) / 2 r=m-1 to find last element valid
+mid = (left + right) / 2 and l=mid+1 to find first element valid
+mid = (left + right + 1) / 2 r=mid-1 to find last element valid
 """
 
 import unittest
@@ -16,11 +17,11 @@ class Solution:
         l = 0
         r = sum(a) // k
         while l < r:
-            m = (r + l + 1) // 2
-            if sum(n // m for n in a) < k:
-                r = m - 1
+            mid = (r + l + 1) // 2
+            if sum(n // mid for n in a) < k:
+                r = mid - 1
             else:
-                l = m
+                l = mid
         return r
 
 

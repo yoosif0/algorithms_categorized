@@ -1,4 +1,5 @@
 """
+@nested-tags:binary_search/no_arr/consumption,binary_search/remove_from_l
 https://leetcode.com/problems/capacity-to-ship-packages-within-d-days
 The trick here is to know that the limits are max(a) and sum(a) for lo and hi respctively
 """
@@ -8,15 +9,15 @@ import unittest
 
 class Solution:
     def shipWithinDays(self, a: list[int], k: int) -> int:
-        def feasible(m: int):
+        def feasible(x: int):
             k2 = 1
             cur = 0
             for i in range(len(a)):
                 cur += a[i]
-                if cur > m:
+                if cur > x:
                     cur = a[i]
                     k2 += 1
-                elif cur == m:
+                elif cur == x:
                     cur = 0
                     k2 += 1
             if cur == 0:
@@ -26,11 +27,11 @@ class Solution:
         l = max(a)
         r = sum(a)
         while l < r:
-            m = (l + r) // 2
-            if not feasible(m):
-                l = m + 1
+            mid = (l + r) // 2
+            if not feasible(mid):
+                l = mid + 1
             else:
-                r = m
+                r = mid
         return l
 
 

@@ -1,4 +1,5 @@
 """
+@nested-tags:binary_search/remove_from_l,binary_search/rotated_sorted_arr
 https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/
 """
 
@@ -10,11 +11,11 @@ class Solution:
         l = 0
         r = len(a) - 1
         while l < r:
-            m = (l + r) // 2
-            if a[m] > a[r]:
-                l = m + 1
+            mid = (l + r) // 2
+            if a[mid] > a[r]:
+                l = mid + 1
             else:
-                r = m
+                r = mid
         return a[l]
 
 

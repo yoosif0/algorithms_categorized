@@ -1,4 +1,5 @@
 """
+@nested-tags:binary_search/no_arr,binary_search/remove_from_both
 https://leetcode.com/problems/guess-number-higher-or-lower/
 """
 
@@ -21,14 +22,14 @@ class Solution:
         l = 1
         r = n
         while l <= r:
-            m = (l + r) // 2
-            ans = guess(m)
+            mid = (l + r) // 2
+            ans = guess(mid)
             if ans == 1:
-                l = m + 1
+                l = mid + 1
             elif ans == -1:
-                r = m - 1
+                r = mid - 1
             else:
-                return m
+                return mid
 
 
 class Test(unittest.TestCase):

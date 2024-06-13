@@ -1,8 +1,6 @@
 """
+@nested-tags:binary_search/matrix,binary_search/peak
 https://leetcode.com/problems/find-a-peak-element-ii/
-#binary_search
-#matrix
-
 
 10 21 15 22 34 18
 21 30 14 25  9 10

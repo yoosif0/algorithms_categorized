@@ -1,4 +1,5 @@
 """
+@nested-tags:binary_search/no_arr,binary_search/remove_from_r
 https://leetcode.com/problems/sqrtx
 """
 
@@ -10,11 +11,11 @@ class Solution:
         l = 0
         r = x
         while l < r:
-            m = (l + r + 1) // 2
-            if m * m > x:
-                r = m - 1
+            mid = (l + r + 1) // 2
+            if mid * mid > x:
+                r = mid - 1
             else:
-                l = m
+                l = mid
         return r
 
 

@@ -1,13 +1,10 @@
 """
+@nested-tags:binary_search/l_r_difference,binary_search/rotated_sorted_arr
 https://leetcode.com/problems/search-in-rotated-sorted-array/
 Search for the pivot (minIndex which I already solved before). See if the target is to the right or left of the 
 pivot by comparing the target to the right most value. If it's larger than it so the target is on the 
 left portion. If not then it's in the right portion. Then we do a binary search on the correct portion.
 Remember to add the missed indecis to the result if you searched the right portion.
-
-#both_right_left_works
-#differet_l_r
-
 """
 
 import unittest

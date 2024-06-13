@@ -1,4 +1,5 @@
 """
+@nested-tags:binary_search/no_arr/consumption
 https://leetcode.com/problems/minimized-maximum-of-products-distributed-to-any-store/
 
 5 [250, 5900]

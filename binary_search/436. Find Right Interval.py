@@ -1,4 +1,5 @@
 """
+@nested-tags:binary_search/remove_from_l,binary_search/store_index,store_index
 https://leetcode.com/problems/find-right-interval
 """
 

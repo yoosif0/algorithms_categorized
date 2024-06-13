@@ -1,6 +1,8 @@
 """
+@nested-tags:binary_search/remove_from_l
 https://leetcode.com/problems/search-insert-position/
-it's flexible because the arr have distinct values
+
+You need to remove from l because if the target is found, you need to return the target index
 """
 
 import unittest
@@ -11,13 +13,11 @@ class Solution:
         l = 0
         r = len(a)
         while l < r:
-            m = (l + r) // 2
-            if a[m] < t:
-                l = m + 1
-            elif a[m] > t:
-                r = m
+            mid = (l + r) // 2
+            if a[mid] < t:
+                l = mid + 1
             else:
-                return m
+                r = mid
         return l
 
 

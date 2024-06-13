@@ -1,4 +1,5 @@
 """
+@nested-tags:binary_search/remove_from_r
 https://leetcode.com/problems/time-based-key-value-store
 {"foo": ["bar", "bar2"]}
 {"foo": [1,4]}
@@ -26,11 +27,11 @@ class TimeMap:
         l = 0
         r = len(a) - 1
         while l < r:
-            m = (l + r + 1) // 2
-            if a[m] > t:
-                r = m - 1
+            mid = (l + r + 1) // 2
+            if a[mid] > t:
+                r = mid - 1
             else:
-                l = m
+                l = mid
         return self.v[k][r]
 
 

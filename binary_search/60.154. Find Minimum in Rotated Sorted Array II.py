@@ -1,6 +1,6 @@
 """
+@nested-tags:binary_search/remove_from_l,binary_search/first_occurance,binary_search/rotated_sorted_arr
 https://leetcode.com/problems/find-minimum-in-rotated-sorted-array-ii
-#first_occurrence
 """
 
 import unittest
@@ -11,12 +11,12 @@ class Solution:
         l = 0
         r = len(a) - 1
         while l < r:
-            m = (l + r) // 2
+            mid = (l + r) // 2
+            if a[mid] > a[r]:
+                l = mid + 1
+            elif a[mid] < a[r]:
+                r = mid
             # the line below holds the whole trick that differentiatest this problem from 153. Find Min...
-            if a[m] > a[r]:
-                l = m + 1
-            elif a[m] < a[r]:
-                r = m
             else:
                 r -= 1
         return a[l]

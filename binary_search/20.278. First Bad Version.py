@@ -1,4 +1,5 @@
 """
+@nested-tags:binary_search/no_arr,binary_search/remove_from_l
 https://leetcode.com/problems/first-bad-version/
 """
 
@@ -16,11 +17,11 @@ class Solution:
         l = 1
         r = n
         while l < r:
-            m = (l + r) // 2
-            if not isBadVersion(m):
-                l = m + 1
+            mid = (l + r) // 2
+            if not isBadVersion(mid):
+                l = mid + 1
             else:
-                r = m
+                r = mid
         return l
 
 

@@ -1,4 +1,5 @@
 """
+@nested-tags:binary_search/no_arr/consumption,binary_search/remove_from_l
 https://leetcode.com/problems/koko-eating-bananas/
 [3, 6, 7, 11], 8
 The trick here is to know that the limits are 1 and max(a) for lo and hi respctively
@@ -13,13 +14,13 @@ class Solution:
         l = 1
         r = max(a)
         while l < r:
-            m = (r + l) // 2
-            # (n - 1) // m + 1 is faster than math.ceil
-            hrs = sum((n - 1) // m + 1 for n in a)
+            mid = (r + l) // 2
+            # (n - 1) // mid + 1 is faster than math.ceil
+            hrs = sum((n - 1) // mid + 1 for n in a)
             if hrs <= t:
-                l = m + 1
+                l = mid + 1
             else:
-                r = m
+                r = mid
         return l
 
 

@@ -1,6 +1,6 @@
 """
+@nested-tags:binary_search/remove_from_both,binary_search/peak
 https://leetcode.com/problems/find-peak-element
-#binary_search
 didn't add padding on left and right because time would be O(n) instead of O(log n)
 """
 
@@ -18,13 +18,13 @@ class Solution:
         l = 1
         r = len(a) - 2
         while l <= r:
-            m = (l + r) // 2
-            if a[m] < a[m + 1]:
-                l = m + 1
-            elif a[m] < a[m - 1]:
-                r = m - 1
+            mid = (l + r) // 2
+            if a[mid] < a[mid + 1]:
+                l = mid + 1
+            elif a[mid] < a[mid - 1]:
+                r = mid - 1
             else:
-                return m
+                return mid
 
 
 class Test(unittest.TestCase):
