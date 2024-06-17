@@ -1,5 +1,5 @@
 """
-@nested-tags:greedy/constructive,knapsack/fractional
+@nested-tags:greedy,knapsack/fractional
 https://leetcode.com/problems/maximum-bags-with-full-capacity-of-rocks/
 the trick here is to sort by how much rocks left for each bag to reach full capacity
 """

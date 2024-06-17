@@ -1,5 +1,5 @@
 """
-@nested-tags:greedy/ptn
+@nested-tags:greedy
 https://leetcode.com/problems/jump-game-ii/
 
 [2,3,1,1,4,0,2,3,0,0,1,5]

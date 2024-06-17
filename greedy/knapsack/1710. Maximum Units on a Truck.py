@@ -1,5 +1,5 @@
 """
-@nested-tags:greedy/constructive,knapsack/fractional
+@nested-tags:greedy,knapsack/fractional
 https://leetcode.com/problems/maximum-units-on-a-truck
 """
 
@@ -7,14 +7,14 @@ import unittest
 
 
 class Solution:
-    def maximumUnits(self, a: list[list[int]], t: int) -> int:
+    def maximumUnits(self, a: list[list[int]], k: int) -> int:
         a.sort(key=lambda x: -x[1])
         ans = 0
         for i in range(len(a)):
-            if t <= a[i][0]:
-                ans += a[i][1] * t
+            if k <= a[i][0]:
+                ans += a[i][1] * k
                 break
-            t -= a[i][0]
+            k -= a[i][0]
             ans += a[i][1] * a[i][0]
         return ans
 

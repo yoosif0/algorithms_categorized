@@ -1,7 +1,6 @@
 """
+@nested-tags:intervals/cur_end,greedy
 https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons/
-
-#overlapping_interval
 
 [[1,2],[2,3],[3,4],[4,5]]
 0: max for first = 2, shot and last_shot 2, finished=1
@@ -10,6 +9,7 @@ https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons/
 3: if last_shot >= b[i][0]; finished++
 return finished
 """
+
 import unittest
 
 
@@ -17,9 +17,10 @@ class Solution:
     def findMinArrowShots(self, a: list[list[int]]) -> int:
         a.sort(key=lambda x: x[1])
         ans = 1
+        cur_end = a[0][1]
         for i in range(1, len(a)):
-            if a[i][0] > a[0][1]:
-                a[0][1] = a[i][1]
+            if a[i][0] > cur_end:
+                cur_end = a[i][1]
                 ans += 1
         return ans
 

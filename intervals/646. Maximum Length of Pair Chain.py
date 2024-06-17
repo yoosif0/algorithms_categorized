@@ -1,4 +1,5 @@
 """
+@nested-tags:intervals/cur_end,greedy
 https://leetcode.com/problems/maximum-length-of-pair-chain/
 sort from least to most max then skip any overlap
 
@@ -32,9 +33,10 @@ class Solution:
     def findLongestChain(self, a: list[list[int]]) -> int:
         a.sort(key=lambda x: x[1])
         ans = 1
+        cur_end = a[0][1]
         for i in range(1, len(a)):
-            if a[i][0] > a[0][1]:
-                a[0][1] = a[i][1]
+            if a[i][0] > cur_end:
+                cur_end = a[i][1]
                 ans += 1
         return ans
 

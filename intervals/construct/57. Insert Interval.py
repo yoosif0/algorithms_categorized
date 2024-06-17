@@ -1,8 +1,10 @@
 """
+@nested-tags:intervals/construct
 https://leetcode.com/problems/insert-interval/
 [[1,3],[6,9]], newInterval = [2,5]
 Output: [[1,5],[6,9]]
 """
+
 import unittest
 
 
@@ -27,8 +29,8 @@ class Solution:
         ans.append([start, end])
 
         # fill rest of unproblematic array
-        for j in range(i, len(a)):
-            ans.append(a[j])
+        for i in range(i, len(a)):
+            ans.append(a[i])
         return ans
 
 

@@ -1,5 +1,5 @@
 """
-@nested-tags:greedy/constructive,knapsack/unbounded
+@nested-tags:greedy,knapsack/unbounded
 I can use greedy here because i can always fallback that there is a "1" coin change unlike the question here https://leetcode.com/problems/coin-change/
 In the later, sometimes, I am able to full bigger coins but end up not able to continue since I don't have a coin of "1"
 """

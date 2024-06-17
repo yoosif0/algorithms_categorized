@@ -1,5 +1,5 @@
 """
-@nested-tags:greedy/cur
+@nested-tags:greedy
 https://leetcode.com/problems/find-the-highest-altitude/
 """
 

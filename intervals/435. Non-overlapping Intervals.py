@@ -1,7 +1,6 @@
 """
+@nested-tags:intervals,greedy
 https://leetcode.com/problems/non-overlapping-intervals/
-#overlapping_interval
-#interval_scheduling
 
 [[1,2],[2,3],[3,4],[1,4],[4,5],[1,2],[4,7],[1,8]]
 [[1,2],[1,2],[2,3],[3,4],[1,4],[4,5],[4,7],[1,8]]
@@ -28,6 +27,7 @@ sort by by end interval but pick the one with lowest range if more than one has 
 
 
 """
+
 import unittest
 
 

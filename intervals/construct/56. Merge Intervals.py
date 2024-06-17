@@ -1,9 +1,9 @@
 """
+@nested-tags:intervals/construct
 https://leetcode.com/problems/merge-intervals/
 
 [[1,3],[2,6],[8,10],[15,18],[1,20]]
 [[1,3],[1,20],[2,6],[8,10],[15,18]]
-#update_arr_last
 
 """
 
