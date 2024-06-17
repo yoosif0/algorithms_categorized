@@ -1,18 +1,18 @@
 """
+@nested-tags:prefix_sum/subarray
 https://leetcode.com/problems/find-the-middle-index-in-array/
-if what's on the right of the pivot equals to what's on the right
-same as 724
 """
+
 from itertools import accumulate
 import unittest
 
 
 class Solution:
     def findMiddleIndex(self, a: list[int]) -> int:
-        a = list(accumulate(a, initial=0))
+        a = list(accumulate(a))
         for i in range(1, len(a)):
-            if a[-1] - a[i] == a[i - 1]:
-                return i - 1
+            if a[i - 1] == a[-1] - a[i]:
+                return i
         return -1
 
 

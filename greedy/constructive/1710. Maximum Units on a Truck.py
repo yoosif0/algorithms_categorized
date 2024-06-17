@@ -1,6 +1,8 @@
 """
+@nested-tags:greedy/constructive,knapsack/fractional
 https://leetcode.com/problems/maximum-units-on-a-truck
 """
+
 import unittest
 
 

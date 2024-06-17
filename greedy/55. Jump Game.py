@@ -1,4 +1,5 @@
 """
+@nested-tags:greedy/ptn
 https://leetcode.com/problems/jump-game/
 [3,2,1,0,4]
 
@@ -11,17 +12,19 @@ so here is a different approach
 4: I can because max_force is 0
 0: I can because max_force is 3
 """
+
 import unittest
 
 
 class Solution:
-    def canJump(self, nums: list[int]) -> bool:
-        max_force = nums[0]
-        for i in range(1, len(nums)):
-            max_force = max_force - 1
-            if max_force < 0:
+    def canJump(self, a: list[int]) -> bool:
+        # ptn stands for potential
+        ptn = a[0]
+        for i in range(1, len(a)):
+            ptn = ptn - 1
+            if ptn < 0:
                 return False
-            max_force = max(nums[i], max_force)
+            ptn = max(a[i], ptn)
         return True
 
 

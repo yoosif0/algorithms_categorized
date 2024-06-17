@@ -1,4 +1,5 @@
 """
+@nested-tags:prefix_sum/subarray
 https://leetcode.com/problems/find-pivot-index/
 
 [1,7,3, 6, 5, 6]
@@ -9,13 +10,8 @@ https://leetcode.com/problems/find-pivot-index/
 0  1  2  3  4
 [4,1, 6, -1,7]
 
-
-[2, 1, -1]
-prefix: [2,3,2]
-
-if what's on the right of the pivot equals to what's on the right
-
 """
+
 from itertools import accumulate
 import unittest
 
@@ -24,7 +20,7 @@ class Solution:
     def pivotIndex(self, a: list[int]) -> int:
         a = list(accumulate(a, initial=0))
         for i in range(1, len(a)):
-            if a[-1] - a[i] == a[i - 1]:
+            if a[i - 1] == a[-1] - a[i]:
                 return i - 1
         return -1
 

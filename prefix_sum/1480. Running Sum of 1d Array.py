@@ -1,6 +1,8 @@
 """
+@nested-tags:prefix_sum
 https://leetcode.com/problems/running-sum-of-1d-array/
 """
+
 from itertools import accumulate
 import unittest
 

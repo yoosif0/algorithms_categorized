@@ -1,10 +1,12 @@
 """
+@nested-tags:knapsack/unbounded
 https://www.youtube.com/watch?v=oBt53YbR9Kk at 3:52:42
 #decision
 2 5
 0 1 2 3 4 5 6 7
     t   t t t t
 """
+
 import functools
 import unittest
 

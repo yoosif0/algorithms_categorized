@@ -1,8 +1,10 @@
 """
+@nested-tags:prefix_sum/min_max
 https://leetcode.com/problems/minimum-value-to-get-positive-step-by-step-sum/
 We need to let the whole prefix sum arr positive so we just identify the lowest spot and make sure 
 the starting element will cover it's negativity
 """
+
 from itertools import accumulate
 import unittest
 

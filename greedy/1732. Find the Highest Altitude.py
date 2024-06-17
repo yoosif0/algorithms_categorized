@@ -1,16 +1,19 @@
 """
+@nested-tags:greedy/cur
 https://leetcode.com/problems/find-the-highest-altitude/
-
 """
-from itertools import accumulate
+
 import unittest
 
 
 class Solution:
     def largestAltitude(self, a: list[int]) -> int:
-        ans = max(list(accumulate(a, initial=0)))
-        # we can't fall below 0 (hence the max)
-        return max(0, ans)
+        cur = 0
+        ans = 0
+        for n in a:
+            cur += n
+            ans = max(cur, ans)
+        return ans
 
 
 class Test(unittest.TestCase):

@@ -1,8 +1,6 @@
 """
+@nested-tags:binary_search/remove_from_r,prefix_sum/binary_search,binary_search/prefix_sum
 https://leetcode.com/problems/longest-subsequence-with-limited-sum/
-#prefix_sum
-#binary_search
-#sorting_helps
 """
 
 from itertools import accumulate
