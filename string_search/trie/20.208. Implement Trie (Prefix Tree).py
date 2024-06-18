@@ -1,40 +1,44 @@
 """
+@nested-tags:linked/trie,string_prefix_search
 https://leetcode.com/problems/implement-trie-prefix-tree/
+
+{
+ c: {a: {r: {is_word: True}}}
+
+}
 """
-from collections import defaultdict
+
 import unittest
 
-
-class Node:
-    def __init__(self):
-        self.m = defaultdict(Node)
-        self.is_word = False
+IS_WORD = "!!"
 
 
 class Trie:
     def __init__(self):
-        self.m = Node()
+        self.m = {}
 
     def insert(self, s: str) -> None:
         cur = self.m
         for ch in s:
-            cur = cur.m[ch]
-        cur.is_word = True
+            if ch not in cur:
+                cur[ch] = {}
+            cur = cur[ch]
+        cur[IS_WORD] = True
 
     def search(self, s: str) -> bool:
         cur = self.m
         for ch in s:
-            if ch not in cur.m:
+            if ch not in cur:
                 return False
-            cur = cur.m[ch]
-        return cur.is_word
+            cur = cur[ch]
+        return IS_WORD in cur
 
     def startsWith(self, s: str) -> bool:
         cur = self.m
         for ch in s:
-            if ch not in cur.m:
+            if ch not in cur:
                 return False
-            cur = cur.m[ch]
+            cur = cur[ch]
         return True
 
 
