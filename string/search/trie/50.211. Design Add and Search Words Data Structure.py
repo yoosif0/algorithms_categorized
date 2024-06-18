@@ -1,5 +1,5 @@
 """
-@nested-tags:linked/trie,string_prefix_search
+@nested-tags:linked/trie,string/search/prefix
 https://leetcode.com/problems/design-add-and-search-words-data-structure/
 """
 
