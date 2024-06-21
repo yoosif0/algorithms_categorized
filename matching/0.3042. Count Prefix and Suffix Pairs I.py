@@ -1,5 +1,5 @@
 """
-@nested-tags:string/search/prefix
+@nested-tags:matching/brute_force
 https://leetcode.com/problems/count-prefix-and-suffix-pairs-i/
 """
 

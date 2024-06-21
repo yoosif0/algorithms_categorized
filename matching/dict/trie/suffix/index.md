@@ -1,0 +1,1 @@
+Build a trie for the reverse of the word to check for suffixes

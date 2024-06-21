@@ -1,0 +1,1 @@
+Include all suffixes of the word in the trie

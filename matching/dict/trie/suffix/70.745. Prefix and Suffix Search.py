@@ -1,5 +1,5 @@
 """
-@nested-tags:linked/trie,string/search/prefix,memoize
+@nested-tags:matching/dict/trie/suffix,memoize
 https://leetcode.com/problems/prefix-and-suffix-search
 """
 
