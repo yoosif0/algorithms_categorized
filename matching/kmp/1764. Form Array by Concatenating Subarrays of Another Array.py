@@ -6,15 +6,22 @@ https://leetcode.com/problems/form-array-by-concatenating-subarrays-of-another-a
 import unittest
 
 
-def kmp(a: list[int], pat: list[int]) -> int:
+def kmp(a: list[int], pat_len: int) -> int:
     dp = [0 for _ in range(len(a))]
-    for i in range(1, len(a)):
-        v = dp[i - 1]
-        while v and a[i] != a[v]:
-            v = dp[v - 1]
-        dp[i] = v + (a[i] == a[v])
-        if dp[i] == len(pat):
-            return i
+    j = 0
+    i = 1
+    while i < len(a):
+        if a[i] == a[j]:
+            dp[i] = j + 1
+            if dp[i] == pat_len:
+                return i
+            i += 1
+            j += 1
+        elif j != 0:
+            j = dp[j - 1]
+        else:
+            dp[i] = 0
+            i += 1
     return -1
 
 
@@ -28,7 +35,7 @@ class Solution:
                 return False
             # kmp
             a = pat + [1111] + nums[j:]
-            i = kmp(a, pat)
+            i = kmp(a, len(pat))
             if i == -1:
                 return False
             j = i - len(pat)

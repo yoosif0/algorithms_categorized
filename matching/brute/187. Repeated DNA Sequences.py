@@ -1,28 +1,23 @@
 """
+@nested-tags:matching/brute_force,seen_twice,sliding_w
 https://leetcode.com/problems/repeated-dna-sequences
-#once_twice
+it's ok to keep slicing the string into substrings (brute force) since substring length is small (10)
 """
+
 import unittest
 
 
 class Solution:
     def findRepeatedDnaSequences(self, s: str) -> list[str]:
-        if len(s) <= 10:
-            return []
         k = 10
-        w = 0
-        once = set()
+        seen = set()
         twice = set()
-        # Slide window
-        while True:
-            cur = s[w : w + k]
-            if cur in once:
+        for i in range(len(s) - k):
+            cur = s[i : i + k]
+            if cur in seen:
                 twice.add(cur)
             else:
-                once.add(cur)
-            if w + k == len(s):
-                break
-            w += 1
+                seen.add(cur)
         return list(twice)
 
 

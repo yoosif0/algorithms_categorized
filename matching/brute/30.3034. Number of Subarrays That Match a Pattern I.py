@@ -1,10 +1,9 @@
 """
-@nested-tags:matching/kmp,cmp
-https://leetcode.com/problems/number-of-subarrays-that-match-a-pattern-ii/
+@nested-tags:matching/brute_force,cmp
+https://leetcode.com/problems/number-of-subarrays-that-match-a-pattern-i
+2 <= n == nums.length <= 100
 
-This is like version 1 of the question but with higher inputs. Version can be brute forced
-
-2 <= n == nums.length <= 10^6
+like version 2 but with smaller inputs (brute force works and no need for kmp)
 """
 
 import unittest
@@ -18,24 +17,11 @@ class Solution:
     def countMatchingSubarrays(self, a: list[int], pat: list[int]) -> int:
         # convert a to change_arr to have the same format as pattern (pat)
         a = [cmp(a[i + 1], a[i]) for i in range(len(a) - 1)]
-        # kmp
-        a = pat + [-2] + a
-        dp = [0 for _ in range(len(a))]
+        pat = tuple(pat)
         ans = 0
-        j = 0
-        i = 1
-        while i < len(a):
-            if a[i] == a[j]:
-                dp[i] = j + 1
-                if dp[i] == len(pat):
-                    ans += 1
-                i += 1
-                j += 1
-            elif j != 0:
-                j = dp[j - 1]
-            else:
-                dp[i] = 0
-                i += 1
+        for i in range(len(a) - len(pat) + 1):
+            if pat == tuple(a[i : i + len(pat)]):
+                ans += 1
         return ans
 
 

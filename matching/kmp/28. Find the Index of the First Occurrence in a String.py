@@ -11,19 +11,27 @@ class Solution:
         # kmp
         s = s2 + "_" + s
         dp = [0 for _ in range(len(s))]
-        for i in range(1, len(s)):
-            v = dp[i - 1]
-            while v and s[i] != s[v]:
-                v = dp[v - 1]
-            dp[i] = v + (s[i] == s[v])
-            if dp[i] == len(s2):
-                return i - 2 * len(s2)
+        j = 0
+        i = 1
+        while i < len(s):
+            if s[j] == s[i]:
+                dp[i] = j + 1
+                if dp[i] == len(s2):
+                    return i - 2 * len(s2)
+                i += 1
+                j += 1
+            elif j != 0:
+                j = dp[j - 1]
+            else:
+                dp[i] = 0
+                i += 1
         return -1
 
 
 class Test(unittest.TestCase):
     def test(self):
         t = Solution()
+        self.assertEqual(t.strStr("mississippi", "issipi"), -1)
         self.assertEqual(t.strStr("sadbutsad", "sad"), 0)
         self.assertEqual(t.strStr("leetcode", "leeto"), -1)
         self.assertEqual(t.strStr("mississippi", "issip"), 4)
