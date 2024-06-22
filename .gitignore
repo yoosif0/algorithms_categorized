@@ -2,6 +2,7 @@
 bin/
 build/
 develop-eggs/
+__pycache__/
 dist/
 eggs/
 lib/
