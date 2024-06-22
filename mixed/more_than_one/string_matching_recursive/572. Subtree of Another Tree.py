@@ -1,34 +1,44 @@
 """
+@nested-tags/matching,binary_tree/dfs
 https://leetcode.com/problems/subtree-of-another-tree/
 """
 
 import unittest
 from typing import Optional
-from hashlib import sha256
 from algoutils.tree_node import TreeNode
+from hashlib import sha256
+
+
+class Solution:
+    def traverse(self, node: Optional[TreeNode]):
+        if node:
+            return f"#{node.val} {self.traverse(node.left)} {self.traverse(node.right)}"
+        return "n"
+
+    def isSubtree(self, root: Optional[TreeNode], subRoot: Optional[TreeNode]) -> bool:
+        return self.traverse(subRoot) in self.traverse(root)
 
 
 class FoundSubtree(Exception):
     pass
 
-
-class Solution:
+class SolutionRecursive:
     def isSubtree(self, root: Optional[TreeNode], subRoot: Optional[TreeNode]) -> bool:
-        def hashNodeWithSideEffect(root: Optional[TreeNode], doComparison: bool):
+        def hh(root: Optional[TreeNode], doComparison: bool):
             if root is None:
                 return "#"
             m = sha256()
             m.update(str(root.val).encode())
-            m.update(hashNodeWithSideEffect(root.left, doComparison).encode())
-            m.update(hashNodeWithSideEffect(root.right, doComparison).encode())
-            hex_digest = m.hexdigest()
-            if doComparison and hex_digest == subRootHash:
+            m.update(hh(root.left, doComparison).encode())
+            m.update(hh(root.right, doComparison).encode())
+            hd = m.hexdigest()
+            if doComparison and hd == srh:
                 raise FoundSubtree()
-            return hex_digest
+            return hd
 
-        subRootHash = hashNodeWithSideEffect(subRoot, False)
+        srh = hh(subRoot, False)
         try:
-            hashNodeWithSideEffect(root, True)
+            hh(root, True)
             return False
         except FoundSubtree:
             return True
