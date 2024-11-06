@@ -1,7 +1,7 @@
 """
 https://leetcode.com/problems/letter-combinations-of-a-phone-number
 2356
-              a                                b                   c
+              a                       b           c
      d      e          f
  j  k  l    j  k  l   j  k  l
 mno mno mno
